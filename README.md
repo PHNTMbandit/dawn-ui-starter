@@ -88,15 +88,29 @@ pnpm db:generate
 pnpm db:push
 ```
 
-### 5. Setup CI/CD
+### 6. Generate Auth Tables
 
-Generate and push the database schema:
+Better Auth requires additional tables for users, sessions, and accounts. Generate them:
+
+```bash
+pnpm dlx auth@latest generate
+```
+
+This creates auth schema in `src/db/`. Then push to your database:
+
+```bash
+pnpm db:push
+```
+
+### 7. Setup CI/CD
+
+Install Lefthook for git hooks:
 
 ```bash
 pnpm dlx lefthook install
 ```
 
-### 6. Start Development Server
+### 8. Start Development Server
 
 ```bash
 pnpm dev
