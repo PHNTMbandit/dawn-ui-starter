@@ -1,0 +1,45 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  "common": {
+    "languages": {
+      "en": "English",
+      "ja": "Japanese"
+    }
+  },
+  "auth": {
+    "signIn": {
+      "title": "Hello there!",
+      "description": "Use your credentials to sign in to your account",
+      "noAccount": "Don't have an account? {#g}Create an account{/g}",
+      "fields": {
+        "username": "Username",
+        "password": "Password",
+        "rememberMe": "Remember me?"
+      },
+      "buttons": {
+        "signIn": "Sign In",
+        "forgotPassword": "Forgot Password?"
+      },
+      "errors": {
+        "invalidCredentials": "Invalid username or password. Please try again."
+      }
+    },
+    "signUp": {
+      "title": "Create a New Account",
+      "fields": {
+        "username": "Username",
+        "email": "Email Address",
+        "password": "Password",
+        "confirmPassword": "Confirm Password"
+      },
+      "buttons": {
+        "signUp": "Sign Up",
+        "haveAccount": "Already have an account? {#g}Sign In{/g}"
+      },
+      "errors": {
+        "passwordMismatch": "Passwords do not match. Please try again.",
+        "emailInUse": "This email address is already in use. Please use a different email address."
+      }
+    }
+  }
+}

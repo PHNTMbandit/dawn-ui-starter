@@ -1,0 +1,35 @@
+prepare-commit-msg:
+  commands:
+    commitzen:
+      interactive: true
+      run: pnpm run cz --hook
+      env:
+        LEFTHOOK: '0'
+
+pre-commit:
+  commands:
+    format:
+      run: pnpm run fmt
+      stage_fixed: true
+    lint-staged:
+      run: pnpx lint-staged
+
+pre-push:
+  commands:
+    format:
+      run: pnpm run fmt
+      stage_fixed: true
+
+    lint-staged:
+      run: pnpx lint-staged
+
+    test:
+      run: pnpm test
+
+    build:
+      run: pnpm build
+
+commit-msg:
+  commands:
+    lint commit message:
+      run: pnpm exec commitlint --edit {1}

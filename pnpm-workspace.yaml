@@ -1,0 +1,10 @@
+allowBuilds:
+  '@parcel/watcher': true
+  esbuild: true
+  lefthook: true
+  lightningcss: true
+minimumReleaseAgeExclude:
+  - dawn-ui-react@1.0.0-alpha.17
+  - dawn-ui-react@1.0.0-alpha.18
+  - dawn-ui-react@1.0.0-alpha.19
+  - dawn-ui-react@1.0.0-alpha.20

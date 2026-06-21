@@ -1,0 +1,60 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  "common": {
+    "languages": {
+      "en": "英語",
+      "ja": "日本語"
+    }
+  },
+  "navigation": {
+    "groups": {
+      "designTools": "デザインツール",
+      "myLibrary": "マイライブラリ"
+    },
+    "items": {
+      "explore": "探索",
+      "colourPalette": "カラーパレット",
+      "spacing": "スペーシング",
+      "typography": "タイポグラフィ",
+      "designSystems": "デザインシステム",
+      "myLibrary": "マイライブラリ",
+      "favourites": "お気に入り"
+    }
+  },
+  "auth": {
+    "signIn": {
+      "title": "アカウントにサインイン",
+      "description": "資格情報を使用してアカウントにサインインしてください",
+      "noAccount": "アカウントをお持ちでないですか？ {#g}アカウントを作成{/g}",
+      "fields": {
+        "username": "ユーザー名",
+        "password": "パスワード",
+        "rememberMe": "ログイン状態を保持する"
+      },
+      "buttons": {
+        "signIn": "サインイン",
+        "forgotPassword": "パスワードをお忘れですか？"
+      },
+      "errors": {
+        "invalidCredentials": "ユーザー名またはパスワードが無効です。もう一度お試しください。"
+      }
+    },
+    "signUp": {
+      "title": "新しいアカウントを作成",
+      "fields": {
+        "username": "ユーザー名",
+        "email": "メールアドレス",
+        "password": "パスワード",
+        "confirmPassword": "パスワードを確認"
+      },
+      "buttons": {
+        "signUp": "サインアップ",
+        "haveAccount": "すでにアカウントをお持ちですか？ {#g}サインイン{/g}"
+      },
+      "errors": {
+        "passwordMismatch": "パスワードが一致しません。もう一度お試しください。",
+        "emailInUse": "このメールアドレスは既に使用されています。別のメールアドレスを使用してください。"
+      }
+    }
+  }
+}
