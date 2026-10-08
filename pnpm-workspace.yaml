@@ -4,7 +4,19 @@ allowBuilds:
   lefthook: true
   lightningcss: true
 minimumReleaseAgeExclude:
-  - dawn-ui-react@1.0.0-alpha.17
-  - dawn-ui-react@1.0.0-alpha.18
-  - dawn-ui-react@1.0.0-alpha.19
-  - dawn-ui-react@1.0.0-alpha.20
+  - dawn-ui-react@1.0.0-alpha.17 || 1.0.0-alpha.18 || 1.0.0-alpha.19 || 1.0.0-alpha.20 || 1.0.0-rc.6
+catalog:
+  vite: npm:@voidzero-dev/vite-plus-core@1.0.0
+  vitest: 5.0.3
+  vite-plus: 1.0.0
+  '@vitest/browser-playwright': 5.0.3
+overrides:
+  vite@*: 'catalog:'
+  vitest@*: 'catalog:'
+peerDependencyRules:
+  allowAny:
+    - vite
+    - vitest
+  allowedVersions:
+    vite: '*'
+    vitest: '*'

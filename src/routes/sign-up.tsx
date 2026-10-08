@@ -1,7 +1,9 @@
+// oxlint-disable id-length
 import { ParaglideMessage } from '@inlang/paraglide-js-react'
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { Button, Separator } from 'dawn-ui-react'
-import { m } from '#/paraglide/messages.js'
+
+import { m } from '@/paraglide/messages.js'
 
 export const Route = createFileRoute('/sign-up')({
   component: RouteComponent,
@@ -9,7 +11,7 @@ export const Route = createFileRoute('/sign-up')({
 
 function RouteComponent() {
   return (
-    <div className="h-full lg:grid lg:grid-cols-2">
+    <div className="h-screen lg:grid lg:grid-cols-2">
       <div className="hidden bg-neutral-container lg:block" />
       <div className="flex h-full w-2/3 flex-col items-center justify-center gap-xl place-self-center text-center lg:w-1/3">
         <div className="w-full space-y-xs">
@@ -17,7 +19,6 @@ function RouteComponent() {
           <p className="text-on-surface-muted">Create your account to get started</p>
         </div>
         <div className="flex w-full flex-col items-center gap-lg">
-          {/* TODO: Add SignUpForm component */}
           <div className="w-full space-y-md rounded-lg border p-lg text-left">
             <p className="style-text-prose--1 text-on-surface-muted">
               Sign up form coming soon. For now, use the sign-in page with demo credentials.

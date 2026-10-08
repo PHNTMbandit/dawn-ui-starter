@@ -4,6 +4,11 @@
     "languages": {
       "en": "英語",
       "ja": "日本語"
+    },
+    "themes": {
+      "light": "ライト",
+      "dark": "ダーク",
+      "system": "システム"
     }
   },
   "navigation": {

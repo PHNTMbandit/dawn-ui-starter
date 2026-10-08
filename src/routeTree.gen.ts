@@ -9,16 +9,20 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SecureRouteImport } from './routes/_secure'
-import { Route as SecureDashboardRouteImport } from './routes/_secure/dashboard'
-import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SecureRouteImport } from './routes/_secure'
 import { Route as SignInRouteImport } from './routes/sign-in'
 import { Route as SignUpRouteImport } from './routes/sign-up'
+import { Route as SecureDashboardRouteImport } from './routes/_secure/dashboard'
+import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 
-const SignUpRoute = SignUpRouteImport.update({
-  id: '/sign-up',
-  path: '/sign-up',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SecureRoute = SecureRouteImport.update({
+  id: '/_secure',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SignInRoute = SignInRouteImport.update({
@@ -26,13 +30,9 @@ const SignInRoute = SignInRouteImport.update({
   path: '/sign-in',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SecureRoute = SecureRouteImport.update({
-  id: '/_secure',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const SignUpRoute = SignUpRouteImport.update({
+  id: '/sign-up',
+  path: '/sign-up',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SecureDashboardRoute = SecureDashboardRouteImport.update({
@@ -74,7 +74,14 @@ export interface FileRouteTypes {
   fullPaths: '/' | '/sign-in' | '/sign-up' | '/dashboard' | '/api/auth/$'
   fileRoutesByTo: FileRoutesByTo
   to: '/' | '/sign-in' | '/sign-up' | '/dashboard' | '/api/auth/$'
-  id: '__root__' | '/' | '/_secure' | '/sign-in' | '/sign-up' | '/_secure/dashboard' | '/api/auth/$'
+  id:
+    | '__root__'
+    | '/'
+    | '/_secure'
+    | '/sign-in'
+    | '/sign-up'
+    | '/_secure/dashboard'
+    | '/api/auth/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -87,18 +94,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sign-up': {
-      id: '/sign-up'
-      path: '/sign-up'
-      fullPath: '/sign-up'
-      preLoaderRoute: typeof SignUpRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sign-in': {
-      id: '/sign-in'
-      path: '/sign-in'
-      fullPath: '/sign-in'
-      preLoaderRoute: typeof SignInRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_secure': {
@@ -108,11 +108,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SecureRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/sign-in': {
+      id: '/sign-in'
+      path: '/sign-in'
+      fullPath: '/sign-in'
+      preLoaderRoute: typeof SignInRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sign-up': {
+      id: '/sign-up'
+      path: '/sign-up'
+      fullPath: '/sign-up'
+      preLoaderRoute: typeof SignUpRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_secure/dashboard': {
@@ -140,7 +147,8 @@ const SecureRouteChildren: SecureRouteChildren = {
   SecureDashboardRoute: SecureDashboardRoute,
 }
 
-const SecureRouteWithChildren = SecureRoute._addFileChildren(SecureRouteChildren)
+const SecureRouteWithChildren =
+  SecureRoute._addFileChildren(SecureRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,

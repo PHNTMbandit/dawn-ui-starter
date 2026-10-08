@@ -1,51 +1,26 @@
-import { createServerValidate, ServerValidateError } from '@tanstack/react-form-start'
-import { redirect } from '@tanstack/react-router'
 import { createServerFn } from '@tanstack/react-start'
 import { setResponseStatus } from '@tanstack/react-start/server'
-import { APIError } from 'better-auth/api'
-import { auth } from '#/lib/auth.ts'
-import { signInFormOpts, signInSchema } from '../schema/sign-in-schema'
+import { isAPIError } from 'better-auth/api'
 
-const serverValidate = createServerValidate({
-  ...signInFormOpts,
-  onServerValidate: async ({ value }) => {
-    const { data, error, success } = await signInSchema.safeParseAsync(value)
-    if (!success) {
-      return error.message
-    }
+import { auth } from '@/lib/auth'
 
+export const handleSignInForm = createServerFn({ method: 'POST' })
+  .validator((data: { username: string; password: string }) => data)
+  .handler(async (ctx) => {
     try {
       await auth.api.signInUsername({
         body: {
-          username: data.username,
-          password: data.password,
+          password: ctx.data.password,
+          username: ctx.data.username,
         },
       })
+      return { success: true } as const
     } catch (error) {
-      if (error instanceof APIError) {
-        return error.message
-      }
-    }
-  },
-})
-
-export const handleSignInForm = createServerFn({ method: 'POST' })
-  .inputValidator((data: unknown) => {
-    if (!(data instanceof FormData)) {
-      throw new Error('Invalid form data')
-    }
-    return data
-  })
-  .handler(async (ctx) => {
-    try {
-      await serverValidate(ctx.data)
-      return redirect({ to: '/explore' })
-    } catch (error) {
-      if (error instanceof ServerValidateError) {
-        return error.response
+      if (isAPIError(error)) {
+        return { error: error.message, success: false } as const
       }
 
       setResponseStatus(500)
-      return 'There was an internal error'
+      return { error: 'There was an internal error', success: false } as const
     }
   })

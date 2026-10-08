@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+if [ -n "$2" ]; then
+  exit 0
+fi
+
+exec < /dev/tty
+vp exec cz --hook || true

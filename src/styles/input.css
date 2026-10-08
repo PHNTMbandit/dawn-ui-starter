@@ -1,5 +1,4 @@
-@import 'dawn-ui-react/styles.css';
-@source '../../node_modules/dawn-ui-react/dist/**/*.{js,mjs}';
+@import 'dawn-ui-react/styles';
 
 @media (prefers-color-scheme: dark) {
   .shiki,

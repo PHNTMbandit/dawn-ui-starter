@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { Button } from 'dawn-ui-react'
-import { ThemeToggle } from '#/components/theme-toggle'
+
+import { ThemeSelect } from '@/components/theme-select'
 
 export const Route = createFileRoute('/')({ component: Home })
 
@@ -10,7 +11,7 @@ function Home() {
       <header className="flex items-center justify-between border-b border-border px-md py-xs">
         <span className="style-text-strong-1">Dawn UI</span>
         <div className="flex items-center gap-sm">
-          <ThemeToggle />
+          <ThemeSelect />
           <Link to="/sign-in">
             <Button variant="ghost" size="small">
               Sign In

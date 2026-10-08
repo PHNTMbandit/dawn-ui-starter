@@ -1,24 +1,63 @@
 import { PasswordIcon, SignInIcon, UserIcon } from '@phosphor-icons/react/dist/ssr'
-import { mergeForm, useTransform, type ServerFormState } from '@tanstack/react-form-start'
+import { mergeForm, useTransform } from '@tanstack/react-form-start'
+import type { ServerFormState } from '@tanstack/react-form-start'
+import { useNavigate } from '@tanstack/react-router'
 import { AlertTitle, cn, Field, Form, InputGroupAddon, useAppForm } from 'dawn-ui-react'
-import { signInFormOpts } from '../schema/sign-in-schema'
-import { handleSignInForm } from '../server/sign-in-action'
+
 import { m } from '@/paraglide/messages'
 
+import { signInFormOpts, signInSchema } from '../schema/sign-in-schema'
+import { handleSignInForm } from '../server/sign-in-action'
+
 type SignInFormProps = React.ComponentProps<'form'> & {
+  // oxlint-disable-next-line typescript/no-explicit-any
   state: ServerFormState<any, undefined> | { errorMap: { onServer: undefined }; errors: never[] }
 }
 
-export const SignInForm = ({ state, className, children, ref, ...props }: SignInFormProps) => {
-  const form = useAppForm({
-    ...signInFormOpts,
-    transform: useTransform((baseForm) => mergeForm(baseForm, state), [state]),
-  })
+export function SignInForm({ state, className, children, ref, ...props }: SignInFormProps) {
+  const navigate = useNavigate(),
+    form = useAppForm({
+      ...signInFormOpts,
+      onSubmit: async ({ value }) => {
+        try {
+          const result = await handleSignInForm({
+            data: value,
+          })
+
+          if (!result.success) {
+            form.setErrorMap({ onSubmit: { fields: {}, form: result.error } })
+            return
+          }
+
+          await navigate({ to: '/dashboard' })
+        } catch (error) {
+          let errorMessage = 'Unable to reach the server.'
+          if (error instanceof Error) {
+            errorMessage = error.message
+          }
+
+          form.setErrorMap({
+            onSubmit: {
+              fields: {},
+              form: errorMessage,
+            },
+          })
+        }
+      },
+      transform: useTransform((baseForm) => mergeForm(baseForm, state), [state]),
+      validators: {
+        onSubmit: signInSchema,
+      },
+    })
 
   return (
     <Form
-      action={handleSignInForm.url}
-      encType={'multipart/form-data'}
+      onSubmit={async (event) => {
+        event.preventDefault()
+        event.stopPropagation()
+        await form.handleSubmit()
+      }}
+      encType="multipart/form-data"
       method="post"
       className={cn('w-full', className)}
       ref={ref}
@@ -30,19 +69,17 @@ export const SignInForm = ({ state, className, children, ref, ...props }: SignIn
           <AlertTitle>{m['auth.signIn.errors.invalidCredentials']()}</AlertTitle>
         </form.FormErrors>
         <form.AppField name="username">
-          {(field) => {
-            return (
-              <Field>
-                <field.FieldInputGroup>
-                  <InputGroupAddon>
-                    <UserIcon weight="bold" />
-                  </InputGroupAddon>
-                  <field.FieldInputGroupInput placeholder={m['auth.signIn.fields.username']()} />
-                </field.FieldInputGroup>
-                <field.FieldErrors />
-              </Field>
-            )
-          }}
+          {(field) => (
+            <Field>
+              <field.FieldInputGroup>
+                <InputGroupAddon>
+                  <UserIcon weight="bold" />
+                </InputGroupAddon>
+                <field.FieldInputGroupInput placeholder={m['auth.signIn.fields.username']()} />
+              </field.FieldInputGroup>
+              <field.FieldErrors />
+            </Field>
+          )}
         </form.AppField>
         <form.AppField name="password">
           {(field) => (
@@ -61,9 +98,9 @@ export const SignInForm = ({ state, className, children, ref, ...props }: SignIn
           )}
         </form.AppField>
         <div className="flex items-center justify-end">
-          <a href="#" className="text-right style-text-default--1 text-brand-muted hover:underline">
+          <p className="text-right style-text-default--1 text-brand-muted hover:underline">
             {m['auth.signIn.buttons.forgotPassword']()}
-          </a>
+          </p>
         </div>
         <form.FormSubmit>
           <SignInIcon weight="bold" />

@@ -1,9 +1,11 @@
+// oxlint-disable id-length
 import { ParaglideMessage } from '@inlang/paraglide-js-react'
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { Separator } from 'dawn-ui-react'
-import { SignInForm } from '#/features/auth/components/sign-in-form.tsx'
-import { m } from '#/paraglide/messages.js'
-import { getFormDataFromServer } from '#/utils/form-data.ts'
+
+import { SignInForm } from '@/features/auth/components/sign-in-form.tsx'
+import { m } from '@/paraglide/messages.js'
+import { getFormDataFromServer } from '@/utils/form-data.ts'
 
 export const Route = createFileRoute('/sign-in')({
   component: RouteComponent,
@@ -16,7 +18,7 @@ function RouteComponent() {
   const { state } = Route.useLoaderData()
 
   return (
-    <div className="h-full lg:grid lg:grid-cols-2">
+    <div className="h-screen lg:grid lg:grid-cols-2">
       <div className="hidden bg-neutral-container lg:block" />
       <div className="flex h-full w-2/3 flex-col items-center justify-center gap-xl place-self-center text-center lg:w-1/3">
         <div className="w-full space-y-xs">

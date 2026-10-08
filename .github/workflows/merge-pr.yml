@@ -1,47 +1,55 @@
-name: Format, Lint, Test, Build
+name: Test before merge and release
 
 on:
+  workflow_dispatch:
   pull_request:
     branches:
       - main
 
-permissions:
-  contents: read
-  packages: read
-
 jobs:
+  copilot-setup-steps:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@v1.21.1
+        with:
+          cache: true
+          run-install: true
+
+      - name: Verify Vite+
+        run: vp --version
+
   test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v7.0.1
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
-          run_install: false
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@v1.21.1
         with:
           node-version: '24'
+          cache: true
+          run-install: false
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: vp install --frozen-lockfile
 
-      - name: Format code
-        run: pnpm fmt
+      - name: Generate Paraglide messages
+        run: vp exec paraglide-js compile --project ./project.inlang --outdir ./src/paraglide
 
-      - name: Lint code
-        run: pnpm lint
+      - name: Check code
+        run: vp check
 
       - name: Install Playwright Browsers
-        run: pnpm exec playwright install --with-deps chromium
+        run: vp exec playwright install
 
-      - name: Run tests
-        run: pnpm test
-
-      - name: Build project
-        run: pnpm build
+      - name: Test code
+        run: vp test

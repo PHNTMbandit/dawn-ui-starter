@@ -1,21 +1,21 @@
 import { createRouter as createTanStackRouter, ErrorComponent } from '@tanstack/react-router'
 import { setupRouterSsrQueryIntegration } from '@tanstack/react-router-ssr-query'
+
 import { getContext } from './integrations/tanstack-query/root-provider'
 import { routeTree } from './routeTree.gen'
 
 export function getRouter() {
-  const context = getContext()
+  const context = getContext(),
+    router = createTanStackRouter({
+      context,
+      defaultErrorComponent: ({ error }) => <ErrorComponent error={error} />,
+      defaultPreload: 'intent',
+      defaultPreloadStaleTime: 0,
+      routeTree,
+      scrollRestoration: true,
+    })
 
-  const router = createTanStackRouter({
-    routeTree,
-    context,
-    scrollRestoration: true,
-    defaultPreload: 'intent',
-    defaultPreloadStaleTime: 0,
-    defaultErrorComponent: ({ error }) => <ErrorComponent error={error} />,
-  })
-
-  setupRouterSsrQueryIntegration({ router, queryClient: context.queryClient })
+  setupRouterSsrQueryIntegration({ queryClient: context.queryClient, router })
 
   return router
 }

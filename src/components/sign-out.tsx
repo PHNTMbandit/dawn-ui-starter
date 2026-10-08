@@ -1,25 +1,25 @@
 import { useNavigate } from '@tanstack/react-router'
 import { Button, cn } from 'dawn-ui-react'
-import { signOut } from '#/lib/auth-client.ts'
+
+import { signOut } from '@/lib/auth-client.ts'
 
 type SignOutProps = React.ComponentProps<'button'>
 
-export const SignOut = ({ className, children, ref, ...props }: SignOutProps) => {
-  const navigate = useNavigate()
-
-  const handleClick = async () => {
-    await signOut({
-      fetchOptions: {
-        onSuccess: () => {
-          navigate({ to: '/sign-in' })
+export function SignOut({ className, children, ref, ...props }: SignOutProps) {
+  const navigate = useNavigate(),
+    handleClick = async () => {
+      await signOut({
+        fetchOptions: {
+          onSuccess: async () => {
+            await navigate({ to: '/sign-in' })
+          },
         },
-      },
-    })
-  }
+      })
+    }
 
   return (
     <Button
-      variant={'outline'}
+      variant="outline"
       onClick={handleClick}
       className={cn('', className)}
       ref={ref}

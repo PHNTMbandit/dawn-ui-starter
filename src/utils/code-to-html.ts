@@ -1,56 +1,72 @@
 import { queryOptions } from '@tanstack/react-query'
-import prettier, { type BuiltInParserName } from 'prettier'
-import * as prettierPluginBabel from 'prettier/plugins/babel'
-import * as prettierPluginEstree from 'prettier/plugins/estree'
-import * as prettierPluginHtml from 'prettier/plugins/html'
-import * as prettierPluginMarkdown from 'prettier/plugins/markdown'
-import * as prettierPluginPostcss from 'prettier/plugins/postcss'
-import * as prettierPluginTypescript from 'prettier/plugins/typescript'
-import { highlighter } from '#/lib/shiki.ts'
-
+import { format } from 'prettier'
+import type { BuiltInParserName } from 'prettier'
+import babelPlugin from 'prettier/plugins/babel'
+import prettierPluginEstree from 'prettier/plugins/estree'
+import prettierPluginHtml from 'prettier/plugins/html'
+import prettierPluginMarkdown from 'prettier/plugins/markdown'
+import prettierPluginPostcss from 'prettier/plugins/postcss'
+import prettierPluginTypescript from 'prettier/plugins/typescript'
 import type { BundledLanguage } from 'shiki/bundle/web'
 
-const formatCode = async (code: string, lang: BuiltInParserName) => {
-  return await prettier.format(code, {
-    parser: lang,
-    plugins: [
-      prettierPluginBabel,
-      prettierPluginEstree,
-      prettierPluginHtml,
-      prettierPluginMarkdown,
-      prettierPluginPostcss,
-      prettierPluginTypescript,
-    ],
-  })
-}
+import { highlighter } from '@/lib/shiki.ts'
 
-const codeToHtml = async (code: string, lang: BundledLanguage) => {
-  const formattedCode = await formatCode(code, lang as BuiltInParserName)
-  return highlighter.codeToHtml(formattedCode, {
-    lang,
-    themes: {
-      light: 'github-light',
-      dark: 'github-dark',
-    },
-    transformers: [
-      {
-        pre: (node) => {
-          node.properties.style = ''
-          return node
-        },
+const prettierParserByLanguage: Partial<Record<BundledLanguage, BuiltInParserName>> = {
+    css: 'css',
+    html: 'html',
+    javascript: 'babel',
+    js: 'babel',
+    json: 'json',
+    markdown: 'markdown',
+    md: 'markdown',
+    scss: 'scss',
+    ts: 'typescript',
+    tsx: 'typescript',
+    typescript: 'typescript',
+  },
+  formatCode = (code: string, lang: BuiltInParserName) =>
+    format(code, {
+      parser: lang,
+      plugins: [
+        babelPlugin,
+        prettierPluginEstree,
+        prettierPluginHtml,
+        prettierPluginMarkdown,
+        prettierPluginPostcss,
+        prettierPluginTypescript,
+      ],
+    }),
+  codeToHtml = async (code: string, lang: BundledLanguage) => {
+    const parser = prettierParserByLanguage[lang]
+    let formattedCode = code
+    if (parser) {
+      formattedCode = await formatCode(code, parser)
+    }
+    return highlighter.codeToHtml(formattedCode, {
+      lang,
+      themes: {
+        dark: 'github-dark',
+        light: 'github-light',
       },
-    ],
-  })
-}
+      transformers: [
+        {
+          pre: (node) => {
+            node.properties.style = ''
+            return node
+          },
+        },
+      ],
+    })
+  },
+  formatCodeQueryOptions = (code: string, lang: BuiltInParserName) =>
+    queryOptions({
+      queryFn: () => formatCode(code, lang),
+      queryKey: ['formatCode', code, lang],
+    }),
+  codeToHtmlQueryOptions = (code: string, lang: BundledLanguage) =>
+    queryOptions({
+      queryFn: () => codeToHtml(code, lang),
+      queryKey: ['codeToHtml', code, lang],
+    })
 
-export const formatCodeQueryOptions = (code: string, lang: BuiltInParserName) =>
-  queryOptions({
-    queryKey: ['formatCode', code, lang],
-    queryFn: () => formatCode(code, lang),
-  })
-
-export const codeToHtmlQueryOptions = (code: string, lang: BundledLanguage) =>
-  queryOptions({
-    queryKey: ['codeToHtml', code, lang],
-    queryFn: () => codeToHtml(code, lang),
-  })
+export { codeToHtmlQueryOptions, formatCodeQueryOptions }

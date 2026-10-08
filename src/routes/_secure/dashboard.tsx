@@ -1,5 +1,7 @@
+import { SidebarSimpleIcon } from '@phosphor-icons/react'
 import { createFileRoute, Link } from '@tanstack/react-router'
 import {
+  cn,
   Sidebar,
   SidebarContent,
   SidebarGroup,
@@ -11,8 +13,9 @@ import {
   SidebarMenuItem,
   SidebarToggle,
 } from 'dawn-ui-react'
-import { SignOut } from '#/components/sign-out'
-import { ThemeToggle } from '#/components/theme-toggle'
+
+import { SignOut } from '@/components/sign-out'
+import { ThemeSelect } from '@/components/theme-select'
 
 export const Route = createFileRoute('/_secure/dashboard')({
   component: RouteComponent,
@@ -22,10 +25,17 @@ function RouteComponent() {
   return (
     <>
       <Sidebar>
-        <SidebarHeader className="border-b p-md">
-          <Link to="/" className="style-text-strong-1">
-            Dawn UI
-          </Link>
+        <SidebarHeader>
+          {(isExpanded) => (
+            <>
+              <span className={cn('style-text-strong-3', !isExpanded && 'hidden')}>
+                <Link to="/" className="style-text-strong-1">
+                  Dawn UI
+                </Link>
+              </span>
+              <SidebarToggle>{() => <SidebarSimpleIcon weight="bold" />}</SidebarToggle>
+            </>
+          )}
         </SidebarHeader>
         <SidebarContent>
           <SidebarGroup>
@@ -43,9 +53,8 @@ function RouteComponent() {
 
       <div className="flex flex-1 flex-col">
         <header className="flex items-center justify-between border-b p-md">
-          <SidebarToggle />
           <div className="flex items-center gap-sm">
-            <ThemeToggle />
+            <ThemeSelect />
             <SignOut />
           </div>
         </header>
