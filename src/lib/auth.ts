@@ -5,6 +5,7 @@ import { tanstackStartCookies } from 'better-auth/tanstack-start'
 
 import { db } from '@/db/index'
 
+// Configure supported sign-in methods, plugins, user hooks, and session lifetime here.
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
     provider: 'pg',

@@ -1,3 +1,4 @@
+/* Import Dawn UI tokens and components; place application-wide CSS overrides below. */
 @import 'dawn-ui-react/styles';
 
 @media (prefers-color-scheme: dark) {

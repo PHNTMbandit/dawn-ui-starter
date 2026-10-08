@@ -4,6 +4,7 @@ import { setupRouterSsrQueryIntegration } from '@tanstack/react-router-ssr-query
 import { getContext } from './integrations/tanstack-query/root-provider'
 import { routeTree } from './routeTree.gen'
 
+// Central router defaults and SSR-aware Query integration live here.
 export function getRouter() {
   const context = getContext(),
     router = createTanStackRouter({

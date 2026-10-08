@@ -7,6 +7,7 @@ import { getLocale } from '@/paraglide/runtime'
 
 import appCss from '../styles/input.css?url'
 
+// Set app-wide metadata and providers here; add global context providers in RootDocument.
 export interface MyRouterContext {
   queryClient: QueryClient
 }

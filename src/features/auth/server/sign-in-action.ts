@@ -4,6 +4,7 @@ import { isAPIError } from 'better-auth/api'
 
 import { auth } from '@/lib/auth'
 
+// Authenticate submitted credentials on the server and return safe form errors.
 export const handleSignInForm = createServerFn({ method: 'POST' })
   .validator((data: { username: string; password: string }) => data)
   .handler(async (ctx) => {
@@ -14,6 +15,7 @@ export const handleSignInForm = createServerFn({ method: 'POST' })
           username: ctx.data.username,
         },
       })
+
       return { success: true } as const
     } catch (error) {
       if (isAPIError(error)) {

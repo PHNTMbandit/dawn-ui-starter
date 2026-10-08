@@ -7,6 +7,7 @@ import {
   'common.themes.system' as common_themes_system,
 } from '@/paraglide/messages'
 
+// Define the options shown by ThemeSelect; labels stay localized through Paraglide.
 export const themes: Theme[] = [
   { icon: SunIcon, label: common_themes_light(), value: 'light' },
   { icon: MoonIcon, label: common_themes_dark(), value: 'dark' },

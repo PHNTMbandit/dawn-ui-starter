@@ -12,7 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SecureRouteImport } from './routes/_secure'
 import { Route as SignInRouteImport } from './routes/sign-in'
-import { Route as SignUpRouteImport } from './routes/sign-up'
 import { Route as SecureDashboardRouteImport } from './routes/_secure/dashboard'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 
@@ -30,11 +29,6 @@ const SignInRoute = SignInRouteImport.update({
   path: '/sign-in',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SignUpRoute = SignUpRouteImport.update({
-  id: '/sign-up',
-  path: '/sign-up',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SecureDashboardRoute = SecureDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -49,14 +43,12 @@ const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/sign-in': typeof SignInRoute
-  '/sign-up': typeof SignUpRoute
   '/dashboard': typeof SecureDashboardRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/sign-in': typeof SignInRoute
-  '/sign-up': typeof SignUpRoute
   '/dashboard': typeof SecureDashboardRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
@@ -65,21 +57,19 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_secure': typeof SecureRouteWithChildren
   '/sign-in': typeof SignInRoute
-  '/sign-up': typeof SignUpRoute
   '/_secure/dashboard': typeof SecureDashboardRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/sign-in' | '/sign-up' | '/dashboard' | '/api/auth/$'
+  fullPaths: '/' | '/sign-in' | '/dashboard' | '/api/auth/$'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/sign-in' | '/sign-up' | '/dashboard' | '/api/auth/$'
+  to: '/' | '/sign-in' | '/dashboard' | '/api/auth/$'
   id:
     | '__root__'
     | '/'
     | '/_secure'
     | '/sign-in'
-    | '/sign-up'
     | '/_secure/dashboard'
     | '/api/auth/$'
   fileRoutesById: FileRoutesById
@@ -88,7 +78,6 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SecureRoute: typeof SecureRouteWithChildren
   SignInRoute: typeof SignInRoute
-  SignUpRoute: typeof SignUpRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
 
@@ -113,13 +102,6 @@ declare module '@tanstack/react-router' {
       path: '/sign-in'
       fullPath: '/sign-in'
       preLoaderRoute: typeof SignInRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sign-up': {
-      id: '/sign-up'
-      path: '/sign-up'
-      fullPath: '/sign-up'
-      preLoaderRoute: typeof SignUpRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_secure/dashboard': {
@@ -154,7 +136,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SecureRoute: SecureRouteWithChildren,
   SignInRoute: SignInRoute,
-  SignUpRoute: SignUpRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
 }
 export const routeTree = rootRouteImport

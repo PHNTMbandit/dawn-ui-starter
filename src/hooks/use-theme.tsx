@@ -34,6 +34,7 @@ const THEME_CHANGE_EVENT = 'theme-change',
       return defaultTheme
     })
 
+// Syncs the selected theme across SSR, local storage, cookies, and system preferences.
 function isTheme(value: string | null | undefined): value is Theme {
   return value === 'light' || value === 'dark' || value === 'system'
 }

@@ -11,6 +11,7 @@ import type { BundledLanguage } from 'shiki/bundle/web'
 
 import { highlighter } from '@/lib/shiki.ts'
 
+// Map Shiki language names to Prettier parsers to format before rendering.
 const prettierParserByLanguage: Partial<Record<BundledLanguage, BuiltInParserName>> = {
     css: 'css',
     html: 'html',

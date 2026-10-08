@@ -8,6 +8,7 @@ if (!databaseUrl) {
   throw new Error('DATABASE_URL is required to configure Drizzle.')
 }
 
+// Update schema and output paths here when you change the application's database layout.
 export default defineConfig({
   dbCredentials: {
     url: databaseUrl,

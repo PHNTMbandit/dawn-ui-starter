@@ -2,13 +2,14 @@ import { PasswordIcon, SignInIcon, UserIcon } from '@phosphor-icons/react/dist/s
 import { mergeForm, useTransform } from '@tanstack/react-form-start'
 import type { ServerFormState } from '@tanstack/react-form-start'
 import { useNavigate } from '@tanstack/react-router'
-import { AlertTitle, cn, Field, Form, InputGroupAddon, useAppForm } from 'dawn-ui-react'
+import { cn, Field, Form, InputGroupAddon, useAppForm } from 'dawn-ui-react'
 
 import { m } from '@/paraglide/messages'
 
 import { signInFormOpts, signInSchema } from '../schema/sign-in-schema'
 import { handleSignInForm } from '../server/sign-in-action'
 
+// Customize validation in the schema and credential handling in the server action.
 type SignInFormProps = React.ComponentProps<'form'> & {
   // oxlint-disable-next-line typescript/no-explicit-any
   state: ServerFormState<any, undefined> | { errorMap: { onServer: undefined }; errors: never[] }
@@ -25,21 +26,20 @@ export function SignInForm({ state, className, children, ref, ...props }: SignIn
           })
 
           if (!result.success) {
-            form.setErrorMap({ onSubmit: { fields: {}, form: result.error } })
+            let errorMessage = m['auth.signIn.errors.invalidCredentials']()
+            if (result.error === 'server') {
+              errorMessage = m['auth.signIn.errors.server']()
+            }
+            form.setErrorMap({ onSubmit: { fields: {}, form: errorMessage } })
             return
           }
 
           await navigate({ to: '/dashboard' })
-        } catch (error) {
-          let errorMessage = 'Unable to reach the server.'
-          if (error instanceof Error) {
-            errorMessage = error.message
-          }
-
+        } catch {
           form.setErrorMap({
             onSubmit: {
               fields: {},
-              form: errorMessage,
+              form: m['auth.signIn.errors.network'](),
             },
           })
         }
@@ -65,9 +65,7 @@ export function SignInForm({ state, className, children, ref, ...props }: SignIn
     >
       {children}
       <form.AppForm>
-        <form.FormErrors>
-          <AlertTitle>{m['auth.signIn.errors.invalidCredentials']()}</AlertTitle>
-        </form.FormErrors>
+        <form.FormErrors>{m['auth.signIn.errors.title']()}</form.FormErrors>
         <form.AppField name="username">
           {(field) => (
             <Field>

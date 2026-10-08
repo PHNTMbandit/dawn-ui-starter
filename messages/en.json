@@ -5,17 +5,121 @@
       "en": "English",
       "ja": "Japanese"
     },
+    "languageSelector": "Language",
     "themes": {
       "light": "Light",
       "dark": "Dark",
       "system": "System"
     }
   },
+  "navigation": {
+    "groups": {
+      "designTools": "Design tools",
+      "myLibrary": "My library"
+    },
+    "items": {
+      "explore": "Explore",
+      "colourPalette": "Color palette",
+      "spacing": "Spacing",
+      "typography": "Typography",
+      "designSystems": "Design systems",
+      "myLibrary": "My library",
+      "favourites": "Favorites"
+    }
+  },
+  "site": {
+    "signIn": "Get started",
+    "sponsor": "Support me",
+    "hero": {
+      "badge": "Full-stack React starter",
+      "title": "The full-stack React starter that's ready on day one",
+      "description": "Authentication, theming, type-safe data, and internationalization are already wired up on TanStack Start — so you can skip the boilerplate and ship your product faster.",
+      "starOnGithub": "Star on GitHub",
+      "styledWith": "Styled with"
+    },
+    "features": {
+      "react": {
+        "title": "React 19 + Compiler",
+        "description": "React 19 with the React Compiler for automatic memoization — fast UIs without manual tuning."
+      },
+      "tanstack": {
+        "title": "TanStack suite",
+        "description": "Start, Router, Query, Form, and Table deliver type-safe routing, data, and forms end to end."
+      },
+      "auth": {
+        "title": "Authentication built in",
+        "description": "Better Auth handles sessions, usernames, and protected routes securely."
+      },
+      "database": {
+        "title": "Type-safe database",
+        "description": "Drizzle ORM with Neon Postgres gives you type-safe, serverless data access."
+      },
+      "i18n": {
+        "title": "Internationalized",
+        "description": "Paraglide compiles type-safe messages, pre-configured for English and Japanese."
+      },
+      "dawnUi": {
+        "title": "Dawn UI included",
+        "description": "Provides accessible, themeable components with light and dark modes."
+      },
+      "toolchain": {
+        "title": "Vite+ toolchain",
+        "description": "Vite+ unifies dev, build, test, lint, and format behind a single CLI."
+      },
+      "storybook": {
+        "title": "Storybook ready",
+        "description": "Develop and document components in isolation with Storybook, plus ready-made example stories."
+      },
+      "cicd": {
+        "title": "CI/CD included",
+        "description": "A GitHub Actions test workflow and Vite+ Git hooks run checks before every commit, push, and pull request."
+      }
+    },
+    "docs": {
+      "react": "React docs",
+      "reactCompiler": "React Compiler",
+      "tanstack": "TanStack docs",
+      "tanstackStart": "TanStack Start docs",
+      "betterAuth": "Better Auth docs",
+      "neon": "Neon docs",
+      "paraglide": "Paraglide JS docs",
+      "dawnUi": "Dawn UI docs",
+      "vitePlus": "Vite+ docs",
+      "storybook": "Storybook docs",
+      "githubActions": "GitHub Actions",
+      "gitHooks": "Git hooks"
+    },
+    "cta": {
+      "title": "Start building today",
+      "description": "Clone the starter and get a production-ready foundation in minutes — authentication, database, and UI included.",
+      "viewOnGithub": "View on GitHub"
+    },
+    "footer": {
+      "builtWith": "Built with",
+      "license": "MIT License"
+    }
+  },
   "auth": {
+    "layout": {
+      "badge": "Full-stack React starter",
+      "title": "Everything you need to ship your next product.",
+      "description": "Authentication, theming, and internationalization come preconfigured so you can focus on the features that matter.",
+      "highlights": {
+        "authTitle": "Secure auth",
+        "authDescription": "Sessions, usernames, and protected routes wired up.",
+        "themeTitle": "Themeable UI",
+        "themeDescription": "Light and dark themes with system sync built in.",
+        "i18nTitle": "i18n ready",
+        "i18nDescription": "Type-safe, compiled messages for every locale.",
+        "toolingTitle": "Fast by default",
+        "toolingDescription": "TanStack Start on the Vite+ toolchain."
+      },
+      "builtWith": "Built with Dawn UI · TanStack Start · Better Auth"
+    },
+    "signOut": "Sign out",
     "signIn": {
       "title": "Hello there!",
       "description": "Use your credentials to sign in to your account",
-      "noAccount": "Don't have an account? {#g}Create an account{/g}",
       "fields": {
         "username": "Username",
         "password": "Password",
@@ -26,25 +130,44 @@
         "forgotPassword": "Forgot Password?"
       },
       "errors": {
-        "invalidCredentials": "Invalid username or password. Please try again."
+        "title": "Unable to sign in",
+        "invalidCredentials": "Invalid username or password. Please try again.",
+        "network": "Unable to reach the server. Please try again.",
+        "server": "Something went wrong. Please try again later."
+      },
+      "validation": {
+        "usernameMin": "Username must be at least 3 characters",
+        "passwordMin": "Password must be at least 6 characters"
       }
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome back — here's what's happening today.",
+    "navigation": "Navigation",
+    "nav": {
+      "dashboard": "Dashboard",
+      "analytics": "Analytics",
+      "team": "Team",
+      "settings": "Settings"
     },
-    "signUp": {
-      "title": "Create a New Account",
-      "fields": {
-        "username": "Username",
-        "email": "Email Address",
-        "password": "Password",
-        "confirmPassword": "Confirm Password"
-      },
-      "buttons": {
-        "signUp": "Sign Up",
-        "haveAccount": "Already have an account? {#g}Sign In{/g}"
-      },
-      "errors": {
-        "passwordMismatch": "Passwords do not match. Please try again.",
-        "emailInUse": "This email address is already in use. Please use a different email address."
-      }
+    "profileName": "Demo User",
+    "profileInitials": "DU",
+    "stats": {
+      "revenue": "Revenue",
+      "activeUsers": "Active users",
+      "conversion": "Conversion"
+    },
+    "activity": {
+      "title": "Recent activity",
+      "description": "The latest updates across your workspace.",
+      "viewAll": "View full activity log",
+      "alex": "signed in from a new device",
+      "jordan": "updated the billing settings",
+      "sam": "invited 3 new team members",
+      "twoMinutesAgo": "2m ago",
+      "oneHourAgo": "1h ago",
+      "fourHoursAgo": "4h ago"
     }
   }
 }

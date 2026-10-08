@@ -3,6 +3,7 @@ import { SidebarProvider } from 'dawn-ui-react'
 
 import { userQueryOptions } from '@/utils/auth-func.ts'
 
+// Routes nested under this layout share the session check and sign-in redirect.
 export const Route = createFileRoute('/_secure')({
   beforeLoad: async ({ context }) => {
     const user = await context.queryClient.query(userQueryOptions)

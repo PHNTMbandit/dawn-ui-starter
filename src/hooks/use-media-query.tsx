@@ -1,5 +1,6 @@
 import React from 'react'
 
+// Pass a CSS media query (for example, '(min-width: 768px)') to track viewport changes.
 export const useMediaQuery = (query: string) => {
   const [matches, setMatches] = React.useState(false)
 

@@ -5,6 +5,7 @@
       "en": "英語",
       "ja": "日本語"
     },
+    "languageSelector": "言語",
     "themes": {
       "light": "ライト",
       "dark": "ダーク",
@@ -26,11 +27,99 @@
       "favourites": "お気に入り"
     }
   },
+  "site": {
+    "signIn": "始める",
+    "sponsor": "サポートする",
+    "hero": {
+      "badge": "フルスタック React スターター",
+      "title": "初日から使えるフルスタック React スターター",
+      "description": "認証、テーマ設定、型安全なデータ連携、多言語対応を TanStack Start 上に構成済み。ボイラープレートを省いて、プロダクトの開発に集中できます。",
+      "starOnGithub": "GitHub でスターする",
+      "styledWith": "使用 UI"
+    },
+    "features": {
+      "react": {
+        "title": "React 19 + コンパイラ",
+        "description": "React 19 と React Compiler による自動メモ化で、手動調整なしに高速な UI を実現します。"
+      },
+      "tanstack": {
+        "title": "TanStack スイート",
+        "description": "Start・Router・Query・Form・Table により、型安全なルーティング、データ、フォームを一貫して実現します。"
+      },
+      "auth": {
+        "title": "認証を組み込み済み",
+        "description": "Better Auth がセッション、ユーザー名、保護されたルートを安全に管理します。"
+      },
+      "database": {
+        "title": "型安全なデータベース",
+        "description": "Drizzle ORM と Neon Postgres で、型安全なサーバーレスデータアクセスを実現します。"
+      },
+      "i18n": {
+        "title": "多言語対応",
+        "description": "Paraglide で型安全なメッセージをコンパイル。英語と日本語を設定済みです。"
+      },
+      "dawnUi": {
+        "title": "Dawn UI を搭載",
+        "description": "アクセシブルでテーマ対応のコンポーネントを、ライト・ダークテーマで利用できます。"
+      },
+      "toolchain": {
+        "title": "Vite+ ツールチェーン",
+        "description": "開発、ビルド、テスト、Lint、フォーマットを Vite+ の CLI に統合しています。"
+      },
+      "storybook": {
+        "title": "Storybook 対応",
+        "description": "Storybook でコンポーネントを分離して開発・ドキュメント化でき、サンプルストーリーも用意済みです。"
+      },
+      "cicd": {
+        "title": "CI/CD を同梱",
+        "description": "GitHub Actions のテストワークフローと Vite+ の Git フックが、コミット・プッシュ・プルリクエストのたびにチェックを実行します。"
+      }
+    },
+    "docs": {
+      "react": "React ドキュメント",
+      "reactCompiler": "React Compiler",
+      "tanstack": "TanStack ドキュメント",
+      "tanstackStart": "TanStack Start ドキュメント",
+      "betterAuth": "Better Auth ドキュメント",
+      "neon": "Neon ドキュメント",
+      "paraglide": "Paraglide JS ドキュメント",
+      "dawnUi": "Dawn UI ドキュメント",
+      "vitePlus": "Vite+ ドキュメント",
+      "storybook": "Storybook ドキュメント",
+      "githubActions": "GitHub Actions",
+      "gitHooks": "Git フック"
+    },
+    "cta": {
+      "title": "今日から開発を始めましょう",
+      "description": "スターターを複製すれば、認証、データベース、UI を備えた本番向けの基盤をすぐに使えます。",
+      "viewOnGithub": "GitHub で見る"
+    },
+    "footer": {
+      "builtWith": "使用 UI",
+      "license": "MIT ライセンス"
+    }
+  },
   "auth": {
+    "layout": {
+      "badge": "フルスタック React スターター",
+      "title": "次のプロダクトを届けるために必要なものを、すべてここに。",
+      "description": "認証、テーマ設定、多言語対応を構成済み。大切な機能の開発に集中できます。",
+      "highlights": {
+        "authTitle": "安全な認証",
+        "authDescription": "セッション、ユーザー名、保護ルートを設定済み。",
+        "themeTitle": "テーマ対応 UI",
+        "themeDescription": "システム設定に連動するライト・ダークテーマ。",
+        "i18nTitle": "多言語対応",
+        "i18nDescription": "型安全なメッセージをコンパイルして利用できます。",
+        "toolingTitle": "高速な開発環境",
+        "toolingDescription": "TanStack Start と Vite+ のツールチェーン。"
+      },
+      "builtWith": "Dawn UI · TanStack Start · Better Auth を使用"
+    },
+    "signOut": "サインアウト",
     "signIn": {
       "title": "アカウントにサインイン",
       "description": "資格情報を使用してアカウントにサインインしてください",
-      "noAccount": "アカウントをお持ちでないですか？ {#g}アカウントを作成{/g}",
       "fields": {
         "username": "ユーザー名",
         "password": "パスワード",
@@ -41,25 +130,44 @@
         "forgotPassword": "パスワードをお忘れですか？"
       },
       "errors": {
-        "invalidCredentials": "ユーザー名またはパスワードが無効です。もう一度お試しください。"
+        "title": "サインインできませんでした",
+        "invalidCredentials": "ユーザー名またはパスワードが無効です。もう一度お試しください。",
+        "network": "サーバーに接続できませんでした。もう一度お試しください。",
+        "server": "エラーが発生しました。しばらくしてからもう一度お試しください。"
+      },
+      "validation": {
+        "usernameMin": "ユーザー名は3文字以上で入力してください",
+        "passwordMin": "パスワードは6文字以上で入力してください"
       }
+    }
+  },
+  "dashboard": {
+    "title": "ダッシュボード",
+    "welcome": "お帰りなさい。本日の状況はこちらです。",
+    "navigation": "ナビゲーション",
+    "nav": {
+      "dashboard": "ダッシュボード",
+      "analytics": "分析",
+      "team": "チーム",
+      "settings": "設定"
     },
-    "signUp": {
-      "title": "新しいアカウントを作成",
-      "fields": {
-        "username": "ユーザー名",
-        "email": "メールアドレス",
-        "password": "パスワード",
-        "confirmPassword": "パスワードを確認"
-      },
-      "buttons": {
-        "signUp": "サインアップ",
-        "haveAccount": "すでにアカウントをお持ちですか？ {#g}サインイン{/g}"
-      },
-      "errors": {
-        "passwordMismatch": "パスワードが一致しません。もう一度お試しください。",
-        "emailInUse": "このメールアドレスは既に使用されています。別のメールアドレスを使用してください。"
-      }
+    "profileName": "デモユーザー",
+    "profileInitials": "デ",
+    "stats": {
+      "revenue": "売上",
+      "activeUsers": "アクティブユーザー",
+      "conversion": "コンバージョン率"
+    },
+    "activity": {
+      "title": "最近のアクティビティ",
+      "description": "ワークスペースの最新の更新です。",
+      "viewAll": "すべてのアクティビティを見る",
+      "alex": "新しいデバイスからサインインしました",
+      "jordan": "請求設定を更新しました",
+      "sam": "チームメンバーを3人招待しました",
+      "twoMinutesAgo": "2分前",
+      "oneHourAgo": "1時間前",
+      "fourHoursAgo": "4時間前"
     }
   }
 }

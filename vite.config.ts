@@ -192,6 +192,7 @@ export default defineConfig({
     include: ['@phosphor-icons/react', '@tanstack/react-form', '@tanstack/react-form-start'],
   },
   plugins: lazyPlugins(() => [
+    // Register application framework, styling, localization, and React integrations here.
     devtools(),
     paraglideVitePlugin({
       outdir: './src/paraglide',
@@ -212,6 +213,7 @@ export default defineConfig({
     noExternal: ['dawn-ui-react', '@daypicker/react'],
   },
   staged: {
+    // These commands are run for matching staged files by the Vite+ Git hook dispatcher.
     '*.{css,json,md,yml,yaml}': 'vp fmt --write --no-error-on-unmatched-pattern',
     '*.{js,jsx,ts,tsx}': 'vp check --fix --no-error-on-unmatched-pattern',
   },

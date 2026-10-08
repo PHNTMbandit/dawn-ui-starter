@@ -1,8 +1,19 @@
 {
   "name": "dawn-ui-starter",
   "private": false,
-  "description": "",
-  "keywords": [],
+  "description": "A full-stack React 19 starter built with TanStack Start, using Vite+ as its toolchain and Dawn UI for components. Includes Better Auth, Drizzle ORM, theming, and English/Japanese internationalization.",
+  "keywords": [
+    "better-auth",
+    "dawn-ui",
+    "drizzle-orm",
+    "internationalization",
+    "react",
+    "react-starter",
+    "starter-template",
+    "tailwindcss",
+    "tanstack-start",
+    "vite-plus"
+  ],
   "homepage": "https://github.com/PHNTMbandit/dawn-ui-starter#readme",
   "bugs": {
     "url": "https://github.com/PHNTMbandit/dawn-ui-starter/issues"
@@ -13,6 +24,7 @@
     "type": "git",
     "url": "https://github.com/PHNTMbandit/dawn-ui-starter.git"
   },
+  "funding": "https://github.com/sponsors/PHNTMbandit",
   "type": "module",
   "scripts": {
     "build-storybook": "storybook build",
@@ -56,7 +68,7 @@
     "@tanstack/router-plugin": "^1.168.42",
     "better-auth": "^1.7.7",
     "class-variance-authority": "^0.7.1",
-    "dawn-ui-react": "1.0.0-rc.6",
+    "dawn-ui-react": "1.0.0-rc.7",
     "drizzle-kit": "0.31.11",
     "drizzle-orm": "^0.45.3",
     "nitro": "3.0.260903-beta",
@@ -65,6 +77,7 @@
     "prettier": "^3.9.9",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
+    "react-icons": "^5.7.0",
     "shiki": "^4.5.0",
     "storybook": "^10.6.1",
     "tailwindcss": "^4.3.3",

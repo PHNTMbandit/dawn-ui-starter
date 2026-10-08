@@ -3,6 +3,7 @@ import { createServerFn } from '@tanstack/react-start'
 
 import { authMiddleware } from '@/middleware/auth-middleware.ts'
 
+// Reuse this authenticated user query in protected routes; tune staleTime for your app.
 const getUser = createServerFn()
     .middleware([authMiddleware])
     .handler(async ({ context }) => context.user),

@@ -4,6 +4,7 @@ import { drizzle } from 'drizzle-orm/neon-http'
 
 config({ path: ['.env.local', '.env'] })
 
+// Build the shared Drizzle connection from DATABASE_URL; configure schema in drizzle.config.ts.
 const databaseUrl = (() => {
     const url = process.env.DATABASE_URL
     if (!url) {

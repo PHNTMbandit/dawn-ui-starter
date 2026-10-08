@@ -1,9 +1,7 @@
-import { CaretUpDownIcon } from '@phosphor-icons/react'
 import {
   cn,
   getThemeByValue,
   Select,
-  SelectIcon,
   SelectItem,
   SelectList,
   SelectPopup,
@@ -19,6 +17,7 @@ import { themes } from '@/utils/themes'
 
 type ThemeSelectProps = ComponentProps<typeof SelectTrigger>
 
+// Add or remove available choices in `@/utils/themes`.
 export function ThemeSelect({ className, ref, ...props }: ThemeSelectProps) {
   const { theme, setTheme } = useTheme(),
     handleThemeChange = (value: ThemeValue | null) => {
@@ -46,17 +45,9 @@ export function ThemeSelect({ className, ref, ...props }: ThemeSelectProps) {
             if (!selectedTheme) {
               return undefined
             }
-            return (
-              <>
-                <selectedTheme.icon weight="bold" />
-                <span>{selectedTheme.label}</span>
-              </>
-            )
+            return <selectedTheme.icon weight="bold" />
           }}
         </SelectValue>
-        <SelectIcon>
-          <CaretUpDownIcon weight="bold" />
-        </SelectIcon>
       </SelectTrigger>
       <SelectPopup className="z-99">
         <SelectList>
