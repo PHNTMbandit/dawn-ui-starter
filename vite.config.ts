@@ -216,6 +216,11 @@ export default defineConfig({
     '*.{js,jsx,ts,tsx}': 'vp check --fix --no-error-on-unmatched-pattern',
   },
   test: {
+    clearMocks: false,
+    css: true,
+    environment: 'jsdom',
+    globals: true,
+    passWithNoTests: true,
     projects: [
       {
         extends: false,
