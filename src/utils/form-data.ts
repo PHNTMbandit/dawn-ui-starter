@@ -1,6 +1,7 @@
 import { getFormData } from '@tanstack/react-form-start'
 import { createServerFn } from '@tanstack/react-start'
 
-export const getFormDataFromServer = createServerFn({ method: 'GET' }).handler(async () => {
-  return getFormData()
-})
+// Read the incoming form payload on the server for TanStack Form's initial state.
+export const getFormDataFromServer = createServerFn({ method: 'GET' }).handler(async () =>
+  getFormData(),
+)

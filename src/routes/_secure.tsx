@@ -1,15 +1,17 @@
 import { createFileRoute, Outlet, redirect } from '@tanstack/react-router'
 import { SidebarProvider } from 'dawn-ui-react'
-import { userQueryOptions } from '#/utils/auth-func.ts'
 
+import { userQueryOptions } from '@/utils/auth-func.ts'
+
+// Routes nested under this layout share the session check and sign-in redirect.
 export const Route = createFileRoute('/_secure')({
-  component: RouteComponent,
   beforeLoad: async ({ context }) => {
-    const user = context.queryClient.ensureQueryData(userQueryOptions)
+    const user = await context.queryClient.query(userQueryOptions)
     return {
       user,
     }
   },
+  component: RouteComponent,
   loader: async ({ context }) => {
     if (!context.user) {
       throw redirect({ to: '/sign-in' })
@@ -20,7 +22,7 @@ export const Route = createFileRoute('/_secure')({
 
 function RouteComponent() {
   return (
-    <SidebarProvider>
+    <SidebarProvider id="main">
       <Outlet />
     </SidebarProvider>
   )

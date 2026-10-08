@@ -1,5 +1,5 @@
-@import 'dawn-ui-react/styles.css';
-@source '../../node_modules/dawn-ui-react/dist/**/*.{js,mjs}';
+/* Import Dawn UI tokens and components; place application-wide CSS overrides below. */
+@import 'dawn-ui-react/styles';
 
 @media (prefers-color-scheme: dark) {
   .shiki,

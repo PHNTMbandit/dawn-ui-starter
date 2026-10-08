@@ -1,6 +1,7 @@
 import { createHighlighter } from 'shiki/bundle/web'
 
+// Add supported code languages and light/dark themes to this shared highlighter.
 export const highlighter = await createHighlighter({
-  themes: ['github-light', 'github-dark'],
   langs: ['css', 'javascript', 'typescript', 'tsx', 'jsx', 'scss'],
+  themes: ['github-light', 'github-dark'],
 })

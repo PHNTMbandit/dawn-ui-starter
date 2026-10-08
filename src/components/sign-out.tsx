@@ -1,32 +1,34 @@
 import { useNavigate } from '@tanstack/react-router'
 import { Button, cn } from 'dawn-ui-react'
-import { signOut } from '#/lib/auth-client.ts'
+
+import { signOut } from '@/lib/auth-client.ts'
+import { m } from '@/paraglide/messages'
 
 type SignOutProps = React.ComponentProps<'button'>
 
-export const SignOut = ({ className, children, ref, ...props }: SignOutProps) => {
-  const navigate = useNavigate()
-
-  const handleClick = async () => {
-    await signOut({
-      fetchOptions: {
-        onSuccess: () => {
-          navigate({ to: '/sign-in' })
+// Ends the Better Auth session, then returns the user to the sign-in route.
+export function SignOut({ className, children, ref, ...props }: SignOutProps) {
+  const navigate = useNavigate(),
+    handleClick = async () => {
+      await signOut({
+        fetchOptions: {
+          onSuccess: async () => {
+            await navigate({ to: '/sign-in' })
+          },
         },
-      },
-    })
-  }
+      })
+    }
 
   return (
     <Button
-      variant={'outline'}
+      variant="outline"
       onClick={handleClick}
       className={cn('', className)}
       ref={ref}
       {...props}
     >
       {children}
-      Sign out
+      {m['auth.signOut']()}
     </Button>
   )
 }
