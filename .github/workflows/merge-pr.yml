@@ -2,6 +2,12 @@ name: Test before merge and release
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+      - alpha
+      - beta
+      - rc
   pull_request:
     branches:
       - main
@@ -53,3 +59,36 @@ jobs:
 
       - name: Test code
         run: vp test
+
+  publish-create-dawn-ui:
+    name: Publish create-dawn-ui
+    needs: test
+    if: |
+      github.event_name != 'pull_request' &&
+      (github.ref_name == 'main' || github.ref_name == 'alpha' ||
+       github.ref_name == 'beta' || github.ref_name == 'rc')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7.0.1
+
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@v1.21.1
+        with:
+          node-version: '24'
+          cache: true
+          run-install: false
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: vp install --frozen-lockfile
+
+      - name: Build create-dawn-ui
+        run: pnpm --filter create-dawn-ui build
+
+      - name: Publish create-dawn-ui
+        run: pnpm --filter create-dawn-ui publish --access public --tag "$NPM_TAG" --no-git-checks
+        env:
+          NPM_TAG: ${{ github.ref_name == 'main' && 'latest' || github.ref_name }}

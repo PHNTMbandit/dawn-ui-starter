@@ -21,6 +21,7 @@ export default defineConfig({
       'src/routeTree.gen.ts',
       'CHANGELOG.md',
       'pnpm-lock.yaml',
+      'packages/**',
     ],
     semi: false,
     singleQuote: true,
@@ -53,6 +54,7 @@ export default defineConfig({
       'src/routeTree.gen.ts',
       'commitlint.config.js',
       '.releaserc.cjs',
+      'packages/**',
     ],
     jsPlugins: [
       { name: 'vite-plus', specifier: 'vite-plus/oxlint-plugin' },
@@ -110,6 +112,7 @@ export default defineConfig({
       'import/no-named-export': 'off',
       'import/no-unassigned-import': 'off',
       'import/prefer-default-export': 'off',
+      'max-statements': 'off',
       'no-duplicate-imports': 'off',
       'no-magic-numbers': 'off',
       'no-unused-vars': 'error',

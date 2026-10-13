@@ -1,0 +1,55 @@
+name: Test before merge and release
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  copilot-setup-steps:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@v1.21.1
+        with:
+          cache: true
+          run-install: true
+
+      - name: Verify Vite+
+        run: vp --version
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7.0.1
+
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@v1.21.1
+        with:
+          node-version: '24'
+          cache: true
+          run-install: false
+
+      - name: Install dependencies
+        run: vp install --frozen-lockfile
+
+      - name: Generate Paraglide messages
+        run: vp exec paraglide-js compile --project ./project.inlang --outdir ./src/paraglide
+
+      - name: Check code
+        run: vp check
+
+      - name: Install Playwright Browsers
+        run: vp exec playwright install
+
+      - name: Test code
+        run: vp test
