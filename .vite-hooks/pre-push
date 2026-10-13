@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
 vp check
 vp test
-vp build
+vp -C . build
+pnpm --filter create-dawn-ui build
