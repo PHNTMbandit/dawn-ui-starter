@@ -7,7 +7,7 @@ import {
   SelectPopup,
   SelectTrigger,
   SelectValue,
-} from 'dawn-ui-react'
+} from 'ixia-ui-react'
 
 import { m } from '@/paraglide/messages'
 import { getLocale, locales, setLocale } from '@/paraglide/runtime'

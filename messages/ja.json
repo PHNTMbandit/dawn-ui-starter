@@ -58,8 +58,8 @@
         "title": "多言語対応",
         "description": "Paraglide で型安全なメッセージをコンパイル。英語と日本語を設定済みです。"
       },
-      "dawnUi": {
-        "title": "Dawn UI を搭載",
+      "ixiaUi": {
+        "title": "Ixia UI を搭載",
         "description": "アクセシブルでテーマ対応のコンポーネントを、ライト・ダークテーマで利用できます。"
       },
       "toolchain": {
@@ -83,7 +83,7 @@
       "betterAuth": "Better Auth ドキュメント",
       "neon": "Neon ドキュメント",
       "paraglide": "Paraglide JS ドキュメント",
-      "dawnUi": "Dawn UI ドキュメント",
+      "ixiaUi": "Ixia UI ドキュメント",
       "vitePlus": "Vite+ ドキュメント",
       "storybook": "Storybook ドキュメント",
       "githubActions": "GitHub Actions",
@@ -114,7 +114,7 @@
         "toolingTitle": "高速な開発環境",
         "toolingDescription": "TanStack Start と Vite+ のツールチェーン。"
       },
-      "builtWith": "Dawn UI · TanStack Start · Better Auth を使用"
+      "builtWith": "Ixia UI · TanStack Start · Better Auth を使用"
     },
     "signOut": "サインアウト",
     "signIn": {

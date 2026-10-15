@@ -60,8 +60,8 @@ jobs:
       - name: Test code
         run: vp test
 
-  publish-create-dawn-ui:
-    name: Publish create-dawn-ui
+  publish-create-ixia:
+    name: Publish create-ixia
     needs: test
     if: |
       github.event_name != 'pull_request' &&
@@ -85,10 +85,10 @@ jobs:
       - name: Install dependencies
         run: vp install --frozen-lockfile
 
-      - name: Build create-dawn-ui
-        run: pnpm --filter create-dawn-ui build
+      - name: Build create-ixia
+        run: pnpm --filter create-ixia build
 
-      - name: Publish create-dawn-ui
-        run: pnpm --filter create-dawn-ui publish --access public --tag "$NPM_TAG" --no-git-checks
+      - name: Publish create-ixia
+        run: pnpm --filter create-ixia publish --access public --tag "$NPM_TAG" --no-git-checks
         env:
           NPM_TAG: ${{ github.ref_name == 'main' && 'latest' || github.ref_name }}

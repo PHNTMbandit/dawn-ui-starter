@@ -211,12 +211,7 @@ export default defineConfig({
       '@': new URL('src', import.meta.url).pathname,
     },
   },
-  // TODO: delete once dawn-ui-react is updated to rc.7 (CSS import moved out of JS bundle)
-  ssr: {
-    noExternal: ['dawn-ui-react', '@daypicker/react'],
-  },
   staged: {
-    // These commands are run for matching staged files by the Vite+ Git hook dispatcher.
     '*.{css,json,md,yml,yaml}': 'vp fmt --write --no-error-on-unmatched-pattern',
     '*.{js,jsx,ts,tsx}': 'vp check --fix --no-error-on-unmatched-pattern',
   },

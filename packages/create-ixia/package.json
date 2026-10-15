@@ -1,0 +1,49 @@
+{
+  "name": "create-ixia",
+  "version": "0.1.0",
+  "description": "Scaffold an Ixia Starter app with the features you need, including Neon + Drizzle, auth, dark mode, and localization.",
+  "keywords": [
+    "cli",
+    "create",
+    "ixia-ui",
+    "scaffold",
+    "starter",
+    "tanstack-start"
+  ],
+  "homepage": "https://github.com/PHNTMbandit/ixia-starter#readme",
+  "bugs": {
+    "url": "https://github.com/PHNTMbandit/ixia-starter/issues"
+  },
+  "license": "MIT",
+  "author": "PHNTMbandit",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PHNTMbandit/ixia-starter.git",
+    "directory": "packages/create-ixia"
+  },
+  "bin": {
+    "create-ixia": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "templates"
+  ],
+  "type": "module",
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "start": "node ./dist/index.js"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.11.0",
+    "picocolors": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "tsdown": "^0.15.6",
+    "typescript": "^7.0.2"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

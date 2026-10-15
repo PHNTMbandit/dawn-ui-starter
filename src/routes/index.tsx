@@ -15,7 +15,7 @@ import {
   BentoBoxHeader,
   BentoBoxTitle,
   Button,
-} from 'dawn-ui-react'
+} from 'ixia-ui-react'
 import { SiBetterauth, SiGithubactions, SiNeon, SiReact, SiStorybook, SiVite } from 'react-icons/si'
 
 import { LanguageSelect } from '@/components/language-select'
@@ -26,9 +26,9 @@ import { m } from '@/paraglide/messages'
 export const Route = createFileRoute('/')({ component: Home })
 
 function Home() {
-  // Starter repo is the primary link; Dawn UI is credited as the UI layer.
-  const STARTER_REPO = 'https://github.com/PHNTMbandit/dawn-ui-starter',
-    DAWN_UI_REPO = 'https://github.com/PHNTMbandit/dawn-ui-react',
+  // Starter repo is the primary link; Ixia UI is credited as the UI layer.
+  const STARTER_REPO = 'https://github.com/PHNTMbandit/ixia-starter',
+    IXIA_UI_REPO = 'https://github.com/PHNTMbandit/ixia-ui',
     SPONSOR_URL = 'https://github.com/sponsors/PHNTMbandit',
     // Each card sells a reason to start from this template.
     features = [
@@ -73,17 +73,17 @@ function Home() {
         title: m['site.features.i18n.title'](),
       },
       {
-        description: m['site.features.dawnUi.description'](),
+        description: m['site.features.ixiaUi.description'](),
         docs: [
           {
-            href: 'https://github.com/PHNTMbandit/dawn-ui-react',
-            label: m['site.docs.dawnUi'](),
+            href: 'https://github.com/PHNTMbandit/ixia-ui',
+            label: m['site.docs.ixiaUi'](),
           },
         ],
         icon: <PaletteIcon aria-hidden="true" weight="bold" />,
         iconBackground: 'var(--color-brand-subtle)',
         iconColor: 'var(--color-brand-default)',
-        title: m['site.features.dawnUi.title'](),
+        title: m['site.features.ixiaUi.title'](),
       },
       {
         description: m['site.features.toolchain.description'](),
@@ -126,7 +126,7 @@ function Home() {
             <span className="flex size-lg items-center justify-center rounded-lg bg-brand-default text-brand-on-default">
               <SparkleIcon weight="fill" />
             </span>
-            Dawn UI Starter
+            Ixia Starter
           </a>
           <div className="flex items-center gap-3xs">
             <LanguageSelect compact />
@@ -162,9 +162,9 @@ function Home() {
           </div>
           <p className="style-text-prose--1 text-on-surface-muted">
             {m['site.hero.styledWith']()}{' '}
-            <a href={DAWN_UI_REPO} target="_blank" rel="noreferrer">
+            <a href={IXIA_UI_REPO} target="_blank" rel="noreferrer">
               <Button variant="link" size="small">
-                Dawn UI
+                Ixia UI
               </Button>
             </a>
           </p>
@@ -204,12 +204,12 @@ function Home() {
           <span className="flex items-center gap-3xs">
             {m['site.footer.builtWith']()}{' '}
             <a
-              href={DAWN_UI_REPO}
+              href={IXIA_UI_REPO}
               target="_blank"
               rel="noreferrer"
               className="text-brand-muted hover:underline"
             >
-              Dawn UI
+              Ixia UI
             </a>
           </span>
           <span>

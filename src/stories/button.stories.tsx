@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Button } from 'dawn-ui-react'
+import { Button } from 'ixia-ui-react'
 
-// Example story: explore Dawn UI's Button via the controls panel.
+// Example story: explore Ixia UI's Button via the controls panel.
 const meta = {
   args: {
     children: 'Button',
@@ -25,7 +25,7 @@ const meta = {
   },
   component: Button,
   tags: ['autodocs'],
-  title: 'Dawn UI/Button',
+  title: 'Ixia UI/Button',
 } satisfies Meta<typeof Button>
 
 export default meta

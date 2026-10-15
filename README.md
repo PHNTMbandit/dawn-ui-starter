@@ -1,8 +1,8 @@
-# Dawn UI Starter
+# Ixia Starter
 
-A full-stack React 19 starter built with [TanStack Start](https://tanstack.com/start) for type-safe routing and server rendering, using [Vite+](https://viteplus.dev/) as its toolchain and [Dawn UI](https://github.com/PHNTMbandit/dawn-ui-react) for components. Includes Better Auth, Drizzle ORM, theming, and English/Japanese internationalization.
+A full-stack React 19 starter built with [TanStack Start](https://tanstack.com/start) for type-safe routing and server rendering, using [Vite+](https://viteplus.dev/) as its toolchain and [Ixia UI](https://github.com/PHNTMbandit/ixia-ui) for components. Includes Better Auth, Drizzle ORM, theming, and English/Japanese internationalization.
 
-[![Use this template](https://img.shields.io/badge/Use%20this%20template-2ea44f?style=for-the-badge&logo=github)](https://github.com/PHNTMbandit/dawn-ui-starter/generate)
+[![Use this template](https://img.shields.io/badge/Use%20this%20template-2ea44f?style=for-the-badge&logo=github)](https://github.com/PHNTMbandit/ixia-starter/generate)
 [![Sponsor](https://img.shields.io/badge/Sponsor-DB61A2?style=for-the-badge&logo=githubsponsors&logoColor=white)](https://github.com/sponsors/PHNTMbandit)
 
 ## Features
@@ -14,7 +14,7 @@ A full-stack React 19 starter built with [TanStack Start](https://tanstack.com/s
 - **TanStack Query** — Powerful data fetching and caching
 - **TanStack Form** — Type-safe form handling with server actions
 - **TanStack Table** — Headless table utilities
-- [**Dawn UI**](https://github.com/PHNTMbandit/dawn-ui-react) — Component library with light and dark themes
+- [**Ixia UI**](https://github.com/PHNTMbandit/ixia-ui) — Component library with light and dark themes
 - **Tailwind CSS v4** — Utility-first styling with the Vite plugin
 - **Shiki** — Beautiful syntax highlighting with GitHub themes
 
@@ -180,7 +180,7 @@ Routes under `src/routes/_secure/` are automatically protected. Users are redire
 
 ## Theming
 
-Dawn UI supports light and dark modes out of the box. The theme toggle component is pre-configured and persists user preference to localStorage.
+Ixia UI supports light and dark modes out of the box. The theme toggle component is pre-configured and persists user preference to localStorage.
 
 ## Internationalization
 

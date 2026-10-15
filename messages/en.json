@@ -58,8 +58,8 @@
         "title": "Internationalized",
         "description": "Paraglide compiles type-safe messages, pre-configured for English and Japanese."
       },
-      "dawnUi": {
-        "title": "Dawn UI included",
+      "ixiaUi": {
+        "title": "Ixia UI included",
         "description": "Provides accessible, themeable components with light and dark modes."
       },
       "toolchain": {
@@ -83,7 +83,7 @@
       "betterAuth": "Better Auth docs",
       "neon": "Neon docs",
       "paraglide": "Paraglide JS docs",
-      "dawnUi": "Dawn UI docs",
+      "ixiaUi": "Ixia UI docs",
       "vitePlus": "Vite+ docs",
       "storybook": "Storybook docs",
       "githubActions": "GitHub Actions",
@@ -114,7 +114,7 @@
         "toolingTitle": "Fast by default",
         "toolingDescription": "TanStack Start on the Vite+ toolchain."
       },
-      "builtWith": "Built with Dawn UI · TanStack Start · Better Auth"
+      "builtWith": "Built with Ixia UI · TanStack Start · Better Auth"
     },
     "signOut": "Sign out",
     "signIn": {

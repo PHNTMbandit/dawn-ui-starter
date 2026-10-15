@@ -2,4 +2,4 @@
 vp check
 vp test
 vp -C . build
-pnpm --filter create-dawn-ui build
+pnpm --filter create-ixia build

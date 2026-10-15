@@ -1,6 +1,6 @@
 import type { QueryClient } from '@tanstack/react-query'
 import { HeadContent, Scripts, createRootRouteWithContext } from '@tanstack/react-router'
-import { DrawerProvider, ToastProvider } from 'dawn-ui-react'
+import { DrawerProvider, ToastProvider } from 'ixia-ui-react'
 
 import { ThemeProvider } from '@/hooks/use-theme'
 import { getLocale } from '@/paraglide/runtime'
@@ -35,7 +35,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         name: 'viewport',
       },
       {
-        title: 'Dawn UI Starter',
+        title: 'Ixia Starter',
       },
     ],
   }),

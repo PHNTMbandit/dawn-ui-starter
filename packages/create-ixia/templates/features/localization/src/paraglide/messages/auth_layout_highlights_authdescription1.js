@@ -1,0 +1,30 @@
+/* eslint-disable */
+import { getLocale, experimentalStaticLocale } from '../runtime.js';
+
+/** @typedef {import('../runtime.js').LocalizedString} LocalizedString */
+
+/** @typedef {{}} Auth_Layout_Highlights_Authdescription1Inputs */
+
+const en_auth_layout_highlights_authdescription1 = /** @type {(inputs: Auth_Layout_Highlights_Authdescription1Inputs) => LocalizedString} */ () => {
+	return /** @type {LocalizedString} */ (`Sessions, usernames, and protected routes wired up.`)
+};
+
+const ja_auth_layout_highlights_authdescription1 = /** @type {(inputs: Auth_Layout_Highlights_Authdescription1Inputs) => LocalizedString} */ () => {
+	return /** @type {LocalizedString} */ (`セッション、ユーザー名、保護ルートを設定済み。`)
+};
+
+/**
+* | output |
+* | --- |
+* | "Sessions, usernames, and protected routes wired up." |
+*
+* @param {Auth_Layout_Highlights_Authdescription1Inputs} inputs
+* @param {{ locale?: "en" | "ja" }} options
+* @returns {LocalizedString}
+*/
+const auth_layout_highlights_authdescription1 = /** @type {((inputs?: Auth_Layout_Highlights_Authdescription1Inputs, options?: { locale?: "en" | "ja" }) => LocalizedString) & import('../runtime.js').MessageMetadata<Auth_Layout_Highlights_Authdescription1Inputs, { locale?: "en" | "ja" }, {}>} */ ((inputs = {}, options = {}) => {
+	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
+	if (locale === "ja") return ja_auth_layout_highlights_authdescription1(inputs)
+	return en_auth_layout_highlights_authdescription1(inputs)
+});
+export { auth_layout_highlights_authdescription1 as "auth.layout.highlights.authDescription" }
