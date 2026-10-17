@@ -2,6 +2,9 @@ name: Test before merge and release
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
@@ -53,3 +56,6 @@ jobs:
 
       - name: Test code
         run: vp test
+
+      - name: Build create-ixia
+        run: pnpm --filter create-ixia build

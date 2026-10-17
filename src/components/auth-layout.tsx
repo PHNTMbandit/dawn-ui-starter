@@ -1,5 +1,5 @@
 import { LightningIcon, PaletteIcon, ShieldCheckIcon, TranslateIcon } from '@phosphor-icons/react'
-import { Badge } from 'dawn-ui-react'
+import { Badge } from 'ixia-ui-react'
 
 import { LanguageSelect } from '@/components/language-select'
 import { ThemeSelect } from '@/components/theme-select'
@@ -37,12 +37,12 @@ export function AuthLayout({ children }: { children: React.ReactNode }) {
         <div className="absolute bottom-[-8rem] left-[-5rem] size-[24rem] rounded-full bg-accent-default/20 blur-[100px]" />
 
         <a
-          href="https://github.com/PHNTMbandit/dawn-ui-starter"
+          href="https://github.com/PHNTMbandit/ixia-starter"
           target="_blank"
           rel="noreferrer"
           className="relative style-text-strong-2 text-brand-on-container"
         >
-          Dawn UI Starter
+          Ixia Starter
         </a>
 
         <div className="relative space-y-xl">

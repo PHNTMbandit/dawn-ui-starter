@@ -21,5 +21,6 @@
     "target": "esnext",
     "types": ["node"],
     "verbatimModuleSyntax": true
-  }
+  },
+  "exclude": ["node_modules", "packages"]
 }

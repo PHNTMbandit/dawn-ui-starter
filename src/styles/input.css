@@ -1,13 +1,105 @@
-/* Import Dawn UI tokens and components; place application-wide CSS overrides below. */
-@import 'dawn-ui-react/styles';
+@import 'ixia-ui-react/styles';
 
-@media (prefers-color-scheme: dark) {
-  .shiki,
-  .shiki span {
-    color: var(--shiki-dark) !important;
-    background-color: var(--shiki-dark-bg) !important;
-    font-style: var(--shiki-dark-font-style) !important;
-    font-weight: var(--shiki-dark-font-weight) !important;
-    text-decoration: var(--shiki-dark-text-decoration) !important;
-  }
+:root {
+  --dawn-brand-default: light-dark(var(--rose-600), var(--rose-300));
+  --dawn-brand-muted: light-dark(var(--rose-700), var(--rose-200));
+  --dawn-brand-subtle: light-dark(var(--rose-100), var(--rose-950));
+  --dawn-brand-on-default: light-dark(var(--white), var(--neutral-950));
+  --dawn-brand-container: light-dark(var(--rose-50), var(--rose-950));
+  --dawn-brand-container-high: light-dark(var(--rose-100), var(--rose-900));
+  --dawn-brand-on-container: light-dark(var(--rose-900), var(--rose-200));
+  --dawn-brand-on-container-muted: light-dark(var(--rose-700), var(--rose-300));
+  --dawn-brand-border: light-dark(var(--rose-300), var(--rose-600));
+  --dawn-brand-border-strong: light-dark(var(--rose-600), var(--rose-400));
+  --dawn-brand-shadow: light-dark(#e11d4840, #fda4b866);
+
+  --dawn-accent-default: light-dark(var(--violet-600), var(--violet-300));
+  --dawn-accent-muted: light-dark(var(--violet-700), var(--violet-200));
+  --dawn-accent-subtle: light-dark(var(--violet-100), var(--violet-950));
+  --dawn-accent-on-default: light-dark(var(--white), var(--neutral-950));
+  --dawn-accent-container: light-dark(var(--violet-50), var(--violet-950));
+  --dawn-accent-container-high: light-dark(var(--violet-100), var(--violet-900));
+  --dawn-accent-on-container: light-dark(var(--violet-900), var(--violet-200));
+  --dawn-accent-on-container-muted: light-dark(var(--violet-700), var(--violet-300));
+  --dawn-accent-border: light-dark(var(--violet-300), var(--violet-700));
+  --dawn-accent-border-strong: light-dark(var(--violet-600), var(--violet-400));
+  --dawn-accent-shadow: light-dark(#7c3aed40, #d0b5fd66);
+
+  --dawn-neutral-default: light-dark(var(--neutral-700), var(--neutral-100));
+  --dawn-neutral-muted: light-dark(var(--neutral-800), var(--neutral-400));
+  --dawn-neutral-subtle: light-dark(var(--neutral-200), var(--neutral-800));
+  --dawn-neutral-on-default: light-dark(var(--white), var(--neutral-950));
+  --dawn-neutral-container: light-dark(var(--neutral-200), var(--neutral-800));
+  --dawn-neutral-container-high: light-dark(var(--neutral-300), var(--neutral-700));
+  --dawn-neutral-on-container: light-dark(var(--neutral-900), var(--neutral-100));
+  --dawn-neutral-on-container-muted: light-dark(var(--neutral-600), var(--neutral-400));
+  --dawn-neutral-border: light-dark(var(--neutral-400), var(--neutral-600));
+  --dawn-neutral-border-strong: light-dark(var(--neutral-500), var(--neutral-400));
+  --dawn-neutral-shadow: light-dark(#00000030, #0000004f);
+
+  --dawn-error-default: light-dark(var(--red-700), var(--red-500));
+  --dawn-error-muted: light-dark(var(--red-800), var(--red-400));
+  --dawn-error-subtle: light-dark(var(--red-100), var(--red-950));
+  --dawn-error-on-default: light-dark(var(--white), var(--neutral-950));
+  --dawn-error-container: light-dark(var(--red-50), var(--red-950));
+  --dawn-error-container-high: light-dark(var(--red-100), var(--red-900));
+  --dawn-error-on-container: light-dark(var(--red-900), var(--red-200));
+  --dawn-error-on-container-muted: light-dark(var(--red-700), var(--red-400));
+  --dawn-error-border: light-dark(var(--red-300), var(--red-700));
+  --dawn-error-border-strong: light-dark(var(--red-600), var(--red-400));
+  --dawn-error-shadow: light-dark(#b91c1c40, #f8717166);
+
+  --dawn-info-default: light-dark(var(--cyan-700), var(--cyan-400));
+  --dawn-info-muted: light-dark(var(--cyan-800), var(--cyan-300));
+  --dawn-info-subtle: light-dark(var(--cyan-100), var(--cyan-950));
+  --dawn-info-on-default: light-dark(var(--white), var(--neutral-950));
+  --dawn-info-container: light-dark(var(--cyan-50), var(--cyan-950));
+  --dawn-info-container-high: light-dark(var(--cyan-100), var(--cyan-900));
+  --dawn-info-on-container: light-dark(var(--cyan-900), var(--cyan-200));
+  --dawn-info-on-container-muted: light-dark(var(--cyan-700), var(--cyan-400));
+  --dawn-info-border: light-dark(var(--cyan-300), var(--cyan-700));
+  --dawn-info-border-strong: light-dark(var(--cyan-600), var(--cyan-400));
+  --dawn-info-shadow: light-dark(#0e7d9040, #22d0ee66);
+
+  --dawn-success-default: light-dark(var(--green-700), var(--green-400));
+  --dawn-success-muted: light-dark(var(--green-800), var(--green-300));
+  --dawn-success-subtle: light-dark(var(--green-100), var(--green-950));
+  --dawn-success-on-default: light-dark(var(--white), var(--neutral-950));
+  --dawn-success-container: light-dark(var(--green-50), var(--green-950));
+  --dawn-success-container-high: light-dark(var(--green-100), var(--green-900));
+  --dawn-success-on-container: light-dark(var(--green-900), var(--green-200));
+  --dawn-success-on-container-muted: light-dark(var(--green-700), var(--green-400));
+  --dawn-success-border: light-dark(var(--green-300), var(--green-700));
+  --dawn-success-border-strong: light-dark(var(--green-600), var(--green-400));
+  --dawn-success-shadow: light-dark(#15803c40, #4ade8040);
+
+  --dawn-warning-default: light-dark(var(--orange-700), var(--amber-400));
+  --dawn-warning-muted: light-dark(var(--orange-800), var(--amber-300));
+  --dawn-warning-subtle: light-dark(var(--orange-100), var(--amber-950));
+  --dawn-warning-on-default: light-dark(var(--white), var(--neutral-950));
+  --dawn-warning-container: light-dark(var(--orange-50), var(--amber-950));
+  --dawn-warning-container-high: light-dark(var(--orange-100), var(--amber-900));
+  --dawn-warning-on-container: light-dark(var(--orange-900), var(--amber-200));
+  --dawn-warning-on-container-muted: light-dark(var(--orange-700), var(--amber-400));
+  --dawn-warning-border: light-dark(var(--orange-300), var(--amber-700));
+  --dawn-warning-border-strong: light-dark(var(--orange-600), var(--amber-400));
+  --dawn-warning-shadow: light-dark(#c24a0c40, #fcab4d40);
+
+  --dawn-surface-background: light-dark(var(--neutral-50), var(--neutral-950));
+  --dawn-surface: light-dark(var(--white), var(--neutral-900));
+  --dawn-surface-2: light-dark(var(--white), var(--neutral-800));
+  --dawn-surface-3: light-dark(var(--white), var(--neutral-700));
+  --dawn-surface-low: light-dark(var(--neutral-200), var(--black));
+  --dawn-on-surface: light-dark(var(--neutral-900), var(--neutral-50));
+  --dawn-on-surface-variant: light-dark(var(--neutral-600), var(--neutral-400));
+  --dawn-on-surface-muted: light-dark(var(--neutral-400), var(--neutral-600));
+  --dawn-on-surface-disabled: light-dark(var(--neutral-300), var(--neutral-700));
+  --dawn-border: light-dark(var(--neutral-200), var(--neutral-800));
+  --dawn-border-strong: light-dark(var(--neutral-400), var(--neutral-600));
+  --dawn-surface-inverse: light-dark(var(--neutral-900), var(--neutral-100));
+  --dawn-on-surface-inverse: light-dark(var(--neutral-100), var(--neutral-900));
+  --dawn-surface-focus-ring: var(--dawn-brand-default);
+  --dawn-scrim: light-dark(#1a1a1acc, #000000cc);
+  --dawn-shadow: light-dark(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.25));
+  --dawn-shadow-strong: light-dark(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4));
 }

@@ -21,6 +21,7 @@ export default defineConfig({
       'src/routeTree.gen.ts',
       'CHANGELOG.md',
       'pnpm-lock.yaml',
+      'packages/**',
     ],
     semi: false,
     singleQuote: true,
@@ -53,6 +54,7 @@ export default defineConfig({
       'src/routeTree.gen.ts',
       'commitlint.config.js',
       '.releaserc.cjs',
+      'packages/**',
     ],
     jsPlugins: [
       { name: 'vite-plus', specifier: 'vite-plus/oxlint-plugin' },
@@ -110,6 +112,7 @@ export default defineConfig({
       'import/no-named-export': 'off',
       'import/no-unassigned-import': 'off',
       'import/prefer-default-export': 'off',
+      'max-statements': 'off',
       'no-duplicate-imports': 'off',
       'no-magic-numbers': 'off',
       'no-unused-vars': 'error',
@@ -208,12 +211,7 @@ export default defineConfig({
       '@': new URL('src', import.meta.url).pathname,
     },
   },
-  // TODO: delete once dawn-ui-react is updated to rc.7 (CSS import moved out of JS bundle)
-  ssr: {
-    noExternal: ['dawn-ui-react', '@daypicker/react'],
-  },
   staged: {
-    // These commands are run for matching staged files by the Vite+ Git hook dispatcher.
     '*.{css,json,md,yml,yaml}': 'vp fmt --write --no-error-on-unmatched-pattern',
     '*.{js,jsx,ts,tsx}': 'vp check --fix --no-error-on-unmatched-pattern',
   },

@@ -1,5 +1,5 @@
 import { createFileRoute, Outlet, redirect } from '@tanstack/react-router'
-import { SidebarProvider } from 'dawn-ui-react'
+import { SidebarProvider } from 'ixia-ui-react'
 
 import { userQueryOptions } from '@/utils/auth-func.ts'
 

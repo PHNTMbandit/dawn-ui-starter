@@ -34,7 +34,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarToggle,
-} from 'dawn-ui-react'
+} from 'ixia-ui-react'
 
 import { LanguageSelect } from '@/components/language-select'
 import { SignOut } from '@/components/sign-out'
@@ -121,7 +121,7 @@ function RouteComponent() {
             <>
               <span className={cn('style-text-strong-3', !isExpanded && 'hidden')}>
                 <Link to="/" className="style-text-strong-1">
-                  Dawn UI
+                  Ixia UI
                 </Link>
               </span>
               <SidebarToggle>{() => <SidebarSimpleIcon weight="bold" />}</SidebarToggle>

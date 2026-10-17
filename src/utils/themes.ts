@@ -1,5 +1,5 @@
 import { ComputerTowerIcon, MoonIcon, SunIcon } from '@phosphor-icons/react'
-import type { Theme } from 'dawn-ui-react'
+import type { Theme } from 'ixia-ui-react'
 
 import {
   'common.themes.dark' as common_themes_dark,

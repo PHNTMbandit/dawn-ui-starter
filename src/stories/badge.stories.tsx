@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Badge } from 'dawn-ui-react'
+import { Badge } from 'ixia-ui-react'
 
-// Example story: explore Dawn UI's Badge tones and variants.
+// Example story: explore Ixia UI's Badge tones and variants.
 const meta = {
   args: {
     children: 'Badge',
@@ -20,7 +20,7 @@ const meta = {
   },
   component: Badge,
   tags: ['autodocs'],
-  title: 'Dawn UI/Badge',
+  title: 'Ixia UI/Badge',
 } satisfies Meta<typeof Badge>
 
 export default meta

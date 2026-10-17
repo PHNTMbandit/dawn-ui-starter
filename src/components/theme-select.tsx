@@ -8,8 +8,8 @@ import {
   SelectTitle,
   SelectTrigger,
   SelectValue,
-} from 'dawn-ui-react'
-import type { ThemeValue } from 'dawn-ui-react'
+} from 'ixia-ui-react'
+import type { ThemeValue } from 'ixia-ui-react'
 import type { ComponentProps } from 'react'
 
 import { useTheme } from '@/hooks/use-theme'
