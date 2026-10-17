@@ -23,7 +23,8 @@ import { ThemeSelect } from '@/components/theme-select'
 import { m } from '@/paraglide/messages'
 
 // Replace this public landing page with the home screen for your application.
-export const Route = createFileRoute('/')({ component: Home })
+export const Route = createFileRoute('/')({ component: Home }),
+  CURRENT_YEAR = new Date().getFullYear()
 
 function Home() {
   // Starter repo is the primary link; Ixia UI is credited as the UI layer.
@@ -213,7 +214,7 @@ function Home() {
             </a>
           </span>
           <span>
-            {m['site.footer.license']()} · © {new Date().getFullYear()}
+            {m['site.footer.license']()} · © {CURRENT_YEAR}
           </span>
         </div>
       </footer>

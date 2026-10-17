@@ -5,9 +5,6 @@ on:
   push:
     branches:
       - main
-      - alpha
-      - beta
-      - rc
   pull_request:
     branches:
       - main
@@ -60,35 +57,5 @@ jobs:
       - name: Test code
         run: vp test
 
-  publish-create-ixia:
-    name: Publish create-ixia
-    needs: test
-    if: |
-      github.event_name != 'pull_request' &&
-      (github.ref_name == 'main' || github.ref_name == 'alpha' ||
-       github.ref_name == 'beta' || github.ref_name == 'rc')
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v7.0.1
-
-      - name: Set up Vite+
-        uses: voidzero-dev/setup-vp@v1.21.1
-        with:
-          node-version: '24'
-          cache: true
-          run-install: false
-          registry-url: https://registry.npmjs.org
-
-      - name: Install dependencies
-        run: vp install --frozen-lockfile
-
       - name: Build create-ixia
         run: pnpm --filter create-ixia build
-
-      - name: Publish create-ixia
-        run: pnpm --filter create-ixia publish --access public --tag "$NPM_TAG" --no-git-checks
-        env:
-          NPM_TAG: ${{ github.ref_name == 'main' && 'latest' || github.ref_name }}

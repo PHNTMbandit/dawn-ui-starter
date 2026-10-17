@@ -54,6 +54,24 @@ cd <your-repository>
 
 For the button on this repository to work, its owner must open **Settings > General** and enable **Template repository**. After creating a copy, update the badge links to point to your repository.
 
+## Create a Project with the CLI
+
+Use `create-ixia` to scaffold a new app and choose which starter features to include. It prompts for a project name and lets you select features such as authentication, database integration, theming, localization, Storybook, and testing.
+
+Requires Node.js 24 or newer:
+
+```bash
+pnpm create ixia
+```
+
+Then follow the prompts. When scaffolding completes, install dependencies and start the app:
+
+```bash
+cd my-ixia-app
+vp install
+vp dev
+```
+
 ## Getting Started
 
 ### Prerequisites

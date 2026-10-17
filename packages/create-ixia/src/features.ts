@@ -107,7 +107,7 @@ export const FEATURES: Feature[] = [
       '@inlang/paraglide-js-react': '^1.0.3',
     },
     devDependencies: {
-      '@inlang/paraglide-js': '^2.26.0',
+      '@inlang/paraglide-js': '^2.27.0',
     },
     hint: 'Compiled, type-safe i18n (English + Japanese to start)',
     id: 'localization',
@@ -121,12 +121,12 @@ export const FEATURES: Feature[] = [
   {
     dependencies: {
       '@neondatabase/serverless': '^1.2.0',
-      'drizzle-orm': '^0.45.3',
+      'drizzle-orm': '^0.45.4',
       pg: '^8.23.1',
     },
     devDependencies: {
       '@types/pg': '^8.23.1',
-      dotenv: '^18.0.6',
+      dotenv: '^18.0.7',
       'drizzle-kit': '0.31.11',
     },
     env: [
@@ -155,14 +155,14 @@ export const FEATURES: Feature[] = [
   },
   {
     devDependencies: {
-      '@storybook/addon-a11y': '^10.6.1',
-      '@storybook/addon-docs': '^10.6.1',
-      '@storybook/addon-themes': '^10.6.1',
-      '@storybook/addon-vitest': '^10.6.1',
-      '@storybook/react-vite': '^10.6.1',
+      '@storybook/addon-a11y': '^10.6.2',
+      '@storybook/addon-docs': '^10.6.2',
+      '@storybook/addon-themes': '^10.6.2',
+      '@storybook/addon-vitest': '^10.6.2',
+      '@storybook/react-vite': '^10.6.2',
       '@vitest/browser-playwright': 'catalog:',
-      playwright: '^1.63.0',
-      storybook: '^10.6.1',
+      playwright: '^1.64.0',
+      storybook: '^10.6.2',
     },
     hint: 'Component development and visual testing',
     id: 'storybook',
@@ -175,7 +175,7 @@ export const FEATURES: Feature[] = [
   },
   {
     dependencies: {
-      prettier: '^3.9.9',
+      prettier: '^3.9.10',
       shiki: '^4.5.0',
     },
     hint: 'Beautiful code blocks with GitHub themes',
@@ -189,7 +189,7 @@ export const FEATURES: Feature[] = [
       '@testing-library/jest-dom': '^7.0.1',
       '@testing-library/react': '^16.3.3',
       jsdom: '^30.1.2',
-      playwright: '^1.63.0',
+      playwright: '^1.64.0',
     },
     hint: 'Unit and browser tests with Testing Library',
     id: 'testing',
