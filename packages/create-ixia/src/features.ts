@@ -10,15 +10,15 @@
  */
 
 export type FeatureId =
-  | 'neon-drizzle'
   | 'auth'
+  | 'commit-tooling'
   | 'dark-mode'
+  | 'github-actions'
   | 'localization'
+  | 'markdown'
+  | 'neon-drizzle'
   | 'storybook'
   | 'testing'
-  | 'shiki'
-  | 'commit-tooling'
-  | 'github-actions'
 
 export interface Feature {
   id: FeatureId
@@ -120,6 +120,37 @@ export const FEATURES: Feature[] = [
   },
   {
     dependencies: {
+      "@content-collections/mdx": "^0.2.2",
+      "gray-matter": "^4.0.3",
+      "hast-util-to-string": "^3.0.1",
+      "html-react-parser": "^6.1.8",
+      "prettier": "^3.9.10",
+      "rehype-raw": "^7.0.0",
+      "rehype-slug": "^6.0.0",
+      "rehype-stringify": "^10.0.1",
+      "remark-gfm": "^4.0.1",
+      "remark-parse": "^11.0.0",
+      "remark-rehype": "^11.1.2",
+      "shiki": "^4.5.0",
+      "unified": "^11.0.5",
+      "unist-util-visit": "^5.1.0"
+    },
+    devDependencies: {
+      "@content-collections/core": "^0.15.3",
+      "@content-collections/vite": "^0.3.1",
+      "@types/hast": "^3.0.5"
+    },
+    hint: 'Author MDX with front matter, reusable components, GitHub Flavored Markdown, and highlighted code',
+    id: 'markdown',
+    label: 'Markdown (MDX)',
+    postInstallNotes: [
+      'Add `.mdx` files under `src/features/docs/components/` with `title` and `description` front matter; the `components` collection is generated automatically.',
+      'Import `allComponents` from `content-collections` and render a document with the `Mdx` component from `@/components/mdx` (see the Markdown section in README).',
+    ],
+    templateDir: 'markdown',
+  },
+  {
+    dependencies: {
       '@neondatabase/serverless': '^1.2.0',
       'drizzle-orm': '^0.45.4',
       pg: '^8.23.1',
@@ -172,16 +203,6 @@ export const FEATURES: Feature[] = [
       storybook: 'storybook dev -p 6006',
     },
     templateDir: 'storybook',
-  },
-  {
-    dependencies: {
-      prettier: '^3.9.10',
-      shiki: '^4.5.0',
-    },
-    hint: 'Beautiful code blocks with GitHub themes',
-    id: 'shiki',
-    label: 'Syntax highlighting (Shiki)',
-    templateDir: 'shiki',
   },
   {
     devDependencies: {

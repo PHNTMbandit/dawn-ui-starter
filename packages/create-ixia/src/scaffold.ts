@@ -33,6 +33,7 @@ export async function scaffold(options: ScaffoldOptions): Promise<void> {
     }
   }
 
+  await writeReadme(options)
   await writePackageJson(options)
   await writeEnvTemplate(options)
   await applyConditionals(targetDir, new Set(features))
@@ -124,6 +125,41 @@ async function restoreDotfiles(dir: string): Promise<void> {
 
 async function copyTemplate(from: string, to: string): Promise<void> {
   await cp(from, to, { force: true, recursive: true })
+}
+
+async function writeReadme(options: ScaffoldOptions): Promise<void> {
+  const { projectName, targetDir, templatesDir, features } = options
+  const baseReadmePath = path.join(templatesDir, 'base', 'README.md')
+  const baseReadme = (await readFile(baseReadmePath, 'utf8'))
+    .replaceAll('{{projectName}}', projectName)
+    .trim()
+  const featureSections: string[] = []
+
+  for (const id of features) {
+    const feature = FEATURE_BY_ID[id]
+    if (!feature.templateDir) {
+      continue
+    }
+
+    const readmePath = path.join(templatesDir, 'features', feature.templateDir, 'README.md')
+    if (!existsSync(readmePath)) {
+      continue
+    }
+
+    const content = (await readFile(readmePath, 'utf8'))
+      .replace(/^# .+$/m, `### ${feature.label}`)
+      .trim()
+    if (content) {
+      featureSections.push(content)
+    }
+  }
+
+  const sections = [baseReadme]
+  if (featureSections.length) {
+    sections.push(`## Selected Features\n\n${featureSections.join('\n\n')}`)
+  }
+
+  await writeFile(path.join(targetDir, 'README.md'), `${sections.join('\n\n')}\n`, 'utf8')
 }
 
 async function writePackageJson(options: ScaffoldOptions): Promise<void> {

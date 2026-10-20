@@ -7,7 +7,6 @@ import { cancel, intro, isCancel, multiselect, note, outro, spinner, text } from
 import pc from 'picocolors'
 
 import { FEATURES, resolveSelection } from './features.js'
-import type { FeatureId } from './features.js'
 import { collectPostInstallNotes, scaffold } from './scaffold.js'
 
 const templatesDir = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'templates')
@@ -84,7 +83,7 @@ async function main() {
     )
   }
 
-  outro(`${pc.green('Done!')}\n\n  cd ${name}\n  vp install\n  vp dev`)
+  outro(`${pc.bgMagenta("You're all set. Go build something great!")}\n\n  cd ${name}\n  vp install\n  vp dev`)
 }
 
 function bail() {

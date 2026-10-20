@@ -25,7 +25,6 @@ export function ThemeSelect({ className, ref, ...props }: ThemeSelectProps) {
         return
       }
 
-      console.log(value)
       setTheme(value)
     }
 
